@@ -4,20 +4,45 @@ class ActividadsController < ApplicationController
 
   # GET /actividads
   # GET /actividads.json
-  def index
+    def index
+    if current_user.rol == "Admin"
     @actividads = Actividad.all
+    @tipo = "Todas las Actividades"
+  else
+    redirect_to get_act_path
   end
 
-  # GET /actividads/1
-  # GET /actividads/1.json
-  def show
+
+  end
+   def get_act
+    @actividads = current_user.actividads.where(estado_envio: true)
+    @tipo = "Mis Actividades"
+    render "index"
+  end
+    def invitado
+
+    @actividads = Actividad.where(responsable_id: current_user.id).where(estado_envio: true)
+    @tipo = "Actividades Invitado"
+    render "index"
   end
 
-  # GET /actividads/new
+ def set_act
+    if current_user.rol == "Director" ||  current_user.rol == "Admin"
+    @actividads = Actividad.where(user_id: current_user.id)
+     @tipo = "Actividades que asigne"
+      else
+    redirect_to get_act_path
+   
+  end
+render "index"
+end
+
+def show
+  end
+
   def new
     @actividad = Actividad.new
   end
-
   # GET /actividads/1/edit
   def edit
   end
@@ -26,11 +51,26 @@ class ActividadsController < ApplicationController
   # POST /actividads.json
   def create
     @actividad = Actividad.new(actividad_params)
+    @actividad.estado_cierre  = false
+    num = Actividad.where(tipo: @actividad.tipo).maximum(:consecutivo)
+    if num != nil
+        num = num + 1
 
+    else
+        num = 1001
+    end
+    ano = Time.now.year.to_s
+    ano = ano.remove("20") 
+
+    tipo = get_tipo(@actividad.tipo)
+    code= "#{tipo}-#{num}-#{ano}" 
+    @actividad.codigo= code
+    @actividad.consecutivo = num
     respond_to do |format|
       if @actividad.save
-        format.html { redirect_to @actividad, notice: 'Actividad was successfully created.' }
-        format.json { render :show, status: :created, location: @actividad }
+        
+        format.html { redirect_to @actividad, notice: 'Actvidad was successfully created.' }
+        format.json { render :show, status: :created, location: @actvidad }
       else
         format.html { render :new }
         format.json { render json: @actividad.errors, status: :unprocessable_entity }
@@ -61,6 +101,48 @@ class ActividadsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+
+
+def new_seguimiento
+  @actividad = Actividad.find(params[:actividad])
+end
+
+def create_seguimiento
+
+  @seguimiento = Seguimiento.create(user_id:params[:user_id],actividad_id:params[:actividad_id],descripcion:params[:descripcion],porcentaje:params[:porcentaje],cierre:params[:cierre],anexo: params[:anexo])
+
+if @seguimiento.save
+
+redirect_to actividad_path(@seguimiento.actividad_id)
+
+else
+redirect_to root_path
+  end
+  end
+
+private
+def get_tipo(x)
+    if x == "Actividad"
+                "ACT"
+    elsif x == "Peticion"
+                   "PET" 
+    elsif x == "Queja"
+                "QUE"
+    elsif x == "Reclamo"
+                    "REC"
+    elsif x == "Felicitaciones"
+                    "FEL"
+      elsif x == "Solicitud"
+                    "SOL"
+
+  end
+end
+
+
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

@@ -1,8 +1,13 @@
 Rails.application.routes.draw do
-  resources :seguimientos
+ 
   devise_for :users
   resources :actividads
   root 'welcome#home'
 
+  get "misactividades", to: "actividads#get_act", as: "get_act"
+  get "actividades", to: "actividads#set_act" , as: "set_act"
+  get "actividades_invitado", to: "actividads#invitado" , as: "invitado"
+  get "new_seguimiento/:actividad", to: "actividads#new_seguimiento" , as: "new_seguimiento"
+  post "create_seguimiento", to: "actividads#create_seguimiento" , as: "create_seguimiento"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
