@@ -14,7 +14,7 @@
   <p class = "p"><%= link_to 'Ver', actividad %> |
     <%= link_to 'Editar', edit_actividad_path(actividad) %> |
     <%= link_to 'Eliminar', actividad, method: :delete, data: { confirm: 'Are you sure?' } %></p>
-      <div class="row actividad">
+      <div class="row actividad <%=get_venci(actividad.e_vencimiento)%>">
    <div class="row">
         
          

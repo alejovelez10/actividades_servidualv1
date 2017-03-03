@@ -6,7 +6,7 @@ class ActividadsController < ApplicationController
   # GET /actividads.json
     def index
     if current_user.rol == "Admin"
-    @actividads = Actividad.all
+    @actividads = Actividad.where(estado_cierre: false)
     @tipo = "Todas las Actividades"
   else
     redirect_to get_act_path
@@ -15,20 +15,20 @@ class ActividadsController < ApplicationController
 
   end
    def get_act
-    @actividads = current_user.actividads.where(estado_envio: true)
+    @actividads = current_user.actividads.where(estado_envio: true).where(estado_cierre: false)
     @tipo = "Mis Actividades"
     render "index"
   end
     def invitado
 
-    @actividads = Actividad.where(responsable_id: current_user.id).where(estado_envio: true)
+    @actividads = Actividad.where(responsable_id: current_user.id).where(estado_envio: true).where(estado_cierre: false)
     @tipo = "Actividades Invitado"
     render "index"
   end
 
  def set_act
     if current_user.rol == "Director" ||  current_user.rol == "Admin"
-    @actividads = Actividad.where(user_id: current_user.id)
+    @actividads = Actividad.where(user_id: current_user.id).where(estado_cierre: false)
      @tipo = "Actividades que asigne"
       else
     redirect_to get_act_path

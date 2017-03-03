@@ -43,3 +43,18 @@
   .navbar-brand img {
  width:220px;
 }
+.vigente
+{
+      border-right: 10px solid #19964b;
+    border-left: 10px solid #19964b;
+}
+.proxi
+{
+      border-right: 10px solid #dcc52a;
+    border-left: 10px solid #dcc52a;
+}
+.vencida
+{
+          border-left: 10px solid #dc422a;
+        border-left: 10px solid #dc422a;
+      }

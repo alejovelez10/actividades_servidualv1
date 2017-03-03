@@ -11,6 +11,25 @@ module ApplicationHelper
         x == true ? "Si" : "No"
         
     end
+
+
+ def get_venci(x)
+    if x == "Vigente"
+        
+            "vigente"
+
+    elsif x == "Proxima a Vencer"
+
+            "proxima"
+
+    else
+
+            "vencida"
+    end
+            
+                
+    end
+
 def get_date(fecha)
    
 
