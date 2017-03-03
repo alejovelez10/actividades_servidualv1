@@ -1,0 +1,74 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Consecutivo:</strong>
+  <%= @actividad.consecutivo %>
+</p>
+
+<p>
+  <strong>Tipo:</strong>
+  <%= @actividad.tipo %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @actividad.user_id %>
+</p>
+
+<p>
+  <strong>Prioridad:</strong>
+  <%= @actividad.prioridad %>
+</p>
+
+<p>
+  <strong>Responsable:</strong>
+  <%= @actividad.responsable_id %>
+</p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @actividad.nombre %>
+</p>
+
+<p>
+  <strong>Descripcion:</strong>
+  <%= @actividad.descripcion %>
+</p>
+
+<p>
+  <strong>Anexo:</strong>
+  <%= @actividad.anexo %>
+</p>
+
+<p>
+  <strong>F entrega:</strong>
+  <%= @actividad.f_entrega %>
+</p>
+
+<p>
+  <strong>Porcentaje:</strong>
+  <%= @actividad.porcentaje %>
+</p>
+
+<p>
+  <strong>Estado envio:</strong>
+  <%= @actividad.estado_envio %>
+</p>
+
+<p>
+  <strong>Contador:</strong>
+  <%= @actividad.contador %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @actividad.codigo %>
+</p>
+
+<p>
+  <strong>E vencimiento:</strong>
+  <%= @actividad.e_vencimiento %>
+</p>
+
+<%= link_to 'Edit', edit_actividad_path(@actividad) %> |
+<%= link_to 'Back', actividads_path %>

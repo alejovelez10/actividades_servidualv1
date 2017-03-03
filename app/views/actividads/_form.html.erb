@@ -1,0 +1,87 @@
+<%= form_for(actividad) do |f| %>
+  <% if actividad.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(actividad.errors.count, "error") %> prohibited this actividad from being saved:</h2>
+
+      <ul>
+      <% actividad.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :consecutivo %>
+    <%= f.number_field :consecutivo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :tipo %>
+    <%= f.text_field :tipo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :user_id %>
+    <%= f.number_field :user_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :prioridad %>
+    <%= f.text_field :prioridad %>
+  </div>
+
+  <div class="field">
+    <%= f.label :responsable_id %>
+    <%= f.number_field :responsable_id %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nombre %>
+    <%= f.text_field :nombre %>
+  </div>
+
+  <div class="field">
+    <%= f.label :descripcion %>
+    <%= f.text_area :descripcion %>
+  </div>
+
+  <div class="field">
+    <%= f.label :anexo %>
+    <%= f.text_field :anexo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :f_entrega %>
+    <%= f.date_select :f_entrega %>
+  </div>
+
+  <div class="field">
+    <%= f.label :porcentaje %>
+    <%= f.text_field :porcentaje %>
+  </div>
+
+  <div class="field">
+    <%= f.label :estado_envio %>
+    <%= f.check_box :estado_envio %>
+  </div>
+
+  <div class="field">
+    <%= f.label :contador %>
+    <%= f.number_field :contador %>
+  </div>
+
+  <div class="field">
+    <%= f.label :codigo %>
+    <%= f.text_field :codigo %>
+  </div>
+
+  <div class="field">
+    <%= f.label :e_vencimiento %>
+    <%= f.text_field :e_vencimiento %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

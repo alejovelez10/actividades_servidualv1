@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  consecutivo: 1
+  tipo: MyString
+  user_id: 1
+  prioridad: MyString
+  responsable_id: 1
+  nombre: MyString
+  descripcion: MyText
+  anexo: MyString
+  f_entrega: 2017-03-03
+  porcentaje: 
+  estado_envio: false
+  contador: 1
+  codigo: MyString
+  e_vencimiento: MyString
+
+two:
+  consecutivo: 1
+  tipo: MyString
+  user_id: 1
+  prioridad: MyString
+  responsable_id: 1
+  nombre: MyString
+  descripcion: MyText
+  anexo: MyString
+  f_entrega: 2017-03-03
+  porcentaje: 
+  estado_envio: false
+  contador: 1
+  codigo: MyString
+  e_vencimiento: MyString

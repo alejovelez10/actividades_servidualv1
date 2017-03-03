@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  actividad_id: 1
+  descripcion: 1
+  porcentaje: 1
+  cierre: 
+  anexo: MyString
+
+two:
+  user_id: 1
+  actividad_id: 1
+  descripcion: 1
+  porcentaje: 1
+  cierre: 
+  anexo: MyString
