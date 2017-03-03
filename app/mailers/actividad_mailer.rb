@@ -1,5 +1,5 @@
 class ActividadMailer < ApplicationMailer
-	
+
 
 def vencimiento(user,actividad,tipo)
   @user = user
@@ -15,10 +15,9 @@ def creacion(user,actividad)
   mail(to: @user.email, subject: "Alerta de Actividad")
 end
 
-def seguimiento(user,actividad)
+def seguimiento(user,seguimiento)
   @user = user 
-  @actividad = actividad
-  
+  @seguimiento = seguimiento
   mail(to: @user.email, subject: "Alerta de Actividad")
 end
 

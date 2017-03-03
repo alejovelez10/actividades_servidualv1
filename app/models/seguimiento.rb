@@ -16,6 +16,12 @@ class Seguimiento < ApplicationRecord
                 actividad.save
 
             end
+        user1 = User.find(actividad.responsable_id)
+        ActividadMailer.seguimiento(user1,self).deliver
+        actividad.users.each do |user|
+                
+        ActividadMailer.seguimiento(user,self).deliver
+        end
 
 	 end
 end
