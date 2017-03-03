@@ -15,11 +15,11 @@ def enviar
         self.contador = (@time / 60 / 60/ 24) + 1
         self.e_vencimiento = "Vigente"
         save
-        #ActividadMailer.creacion(user,self).deliver
-        #self.users.each do |user|
+        ActividadMailer.creacion(user,self).deliver
+        self.users.each do |user|
                 
-               # ActividadMailer.invitado(user,self).deliver
-       # end
+                ActividadMailer.invitado(user,self).deliver
+        end
      
         
       end

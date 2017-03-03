@@ -14,5 +14,17 @@
 //= require jquery_ujs
 //= require chosen-jquery
 //= require twitter/bootstrap
+//= require ckeditor-jquery
 //= require turbolinks
+//= require config
 //= require_tree .
+
+
+$(document).on('turbolinks:load',function() {
+$('.ck').ckeditor({
+  // optional config
+});
+  
+
+
+});

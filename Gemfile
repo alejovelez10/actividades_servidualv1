@@ -31,7 +31,9 @@ gem 'twitter-bootstrap-rails', '~> 3.2', '>= 3.2.2'
 gem 'devise' 
 gem 'carrierwave'
 gem 'chosen-rails'
-
+gem 'fog', '~> 1.38'
+gem 'ckeditor_rails', '~> 4.5', '>= 4.5.10'
+gem 'figaro'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

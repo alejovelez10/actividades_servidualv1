@@ -152,6 +152,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def actividad_params
-      params.require(:actividad).permit(:consecutivo, :tipo, :user_id, :prioridad, :responsable_id, :nombre, :descripcion, :anexo, :f_entrega, :porcentaje, :estado_envio, :contador, :codigo, :e_vencimiento)
+      params.require(:actividad).permit(:consecutivo, :tipo, :user_id, :prioridad, :responsable_id, :nombre, :descripcion, :anexo, :f_entrega, :porcentaje, :estado_envio, :contador, :codigo, :e_vencimiento, :user_ids => [])
     end
 end
