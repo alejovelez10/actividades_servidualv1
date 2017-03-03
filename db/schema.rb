@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303143104) do
+ActiveRecord::Schema.define(version: 20170303144708) do
 
   create_table "actividads", force: :cascade do |t|
     t.integer  "consecutivo"
@@ -30,6 +30,13 @@ ActiveRecord::Schema.define(version: 20170303143104) do
     t.string   "e_vencimiento"
     t.datetime "created_at",     null: false
     t.datetime "updated_at",     null: false
+  end
+
+  create_table "actividads_users", id: false, force: :cascade do |t|
+    t.integer "actividad_id"
+    t.integer "user_id"
+    t.index ["actividad_id"], name: "index_actividads_users_on_actividad_id"
+    t.index ["user_id"], name: "index_actividads_users_on_user_id"
   end
 
   create_table "seguimientos", force: :cascade do |t|

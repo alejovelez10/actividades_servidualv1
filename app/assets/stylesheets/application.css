@@ -12,4 +12,34 @@
  *
  *= require_tree .
  *= require_self
+  *= require chosen
  */
+.app{
+       background: linear-gradient( rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5) ), 
+ url('https://c1.staticflickr.com/1/613/32336986213_422417cf8f_o.jpg')no-repeat center top;
+  background-size: cover;
+  
+}
+.admin
+{
+	margin:0px !important;
+}
+
+.btn-primary {
+    color: #fff !important;
+    background-color: #428bca;
+    border-color: #357ebd;
+}
+.color-blue
+{
+	    color: #428bca;
+}
+
+.navbar-brand {
+    float: left;
+    padding: 0px 15px !important;
+
+  }
+  .navbar-brand img {
+ width:220px;
+}

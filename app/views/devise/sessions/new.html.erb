@@ -1,0 +1,54 @@
+
+<br>
+<br>
+<br>
+<div class="row login">
+ 
+  <div class="col-md-4 col-md-offset-4 bd">
+    <h2 class="text-center">Iniciar Sesión</h2>
+
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, autocomplete: "off", class: "form-control" %>
+  </div>
+
+<br>
+
+  <div class="actions">
+    <%= f.submit "Ingresar", class: "btn btn-primary btn-block" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+  </div>
+</div>
+
+
+
+<style type="text/css" media="screen">
+  .login
+  {
+    color: white;
+  }
+    .login .bd
+  {
+     padding-left: 65px !important;
+     padding-right: 65px !important;
+
+  }
+  .login h1
+  {
+    text-align: center;
+    color: #00e3ff;
+  }
+   .login h1 span
+  {
+    color: #ffca29;
+  }
+</style>

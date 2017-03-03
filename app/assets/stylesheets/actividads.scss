@@ -1,3 +1,28 @@
 // Place all the styles related to the Actividads controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.actividad p
+{
+margin:0px;
+}
+  
+  .hr {
+     margin-top: 0px;
+    margin-bottom: 8px;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+.actividad
+{
+padding: 10px;
+    border: 1px solid #cecece;
+    margin-right: 2px;
+    background:#f1f1f1;
+        color: gray;
+}
+.p
+{
+  margin:0px;
+  text-align: right;
+}
+

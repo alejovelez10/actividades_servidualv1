@@ -1,7 +1,7 @@
 <%= form_for(actividad) do |f| %>
   <% if actividad.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(actividad.errors.count, "error") %> prohibited this actividad from being saved:</h2>
+      <h2><%= pluralize(actvidad.errors.count, "error") %> prohibited this actvidad from being saved:</h2>
 
       <ul>
       <% actividad.errors.full_messages.each do |message| %>
@@ -11,77 +11,124 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :consecutivo %>
-    <%= f.number_field :consecutivo %>
-  </div>
-
-  <div class="field">
+  
+<div class="row">
+  <div class="col-md-3">
+    
+  <div class="form-group">
     <%= f.label :tipo %>
-    <%= f.text_field :tipo %>
+     <%= f.select 'tipo', options_for_select(["Actividad", "Petición", "Queja", "Reclamo", "Solicitud","Felicitaciones"]), {},{:class => 'form-control'}%>
   </div>
-
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.number_field :user_id %>
   </div>
-
-  <div class="field">
-    <%= f.label :prioridad %>
-    <%= f.text_field :prioridad %>
-  </div>
-
-  <div class="field">
+  <div class="col-md-3">
+      <div class="form-group">
     <%= f.label :responsable_id %>
-    <%= f.number_field :responsable_id %>
+   <%= f.select :responsable_id,
+   User.all.map { |u| ["#{u.nombres} #{u.apellidos}", u.id] },
+               { include_blank: false },
+               { class: 'form-control chosen-select' }
+%>
   </div>
 
-  <div class="field">
-    <%= f.label :nombre %>
-    <%= f.text_field :nombre %>
+  </div>
+ <div class="col-md-6">
+    
+     <div class="form-group">
+               <%= f.label "Otros interesados" %>
+               <%= f.select :user_ids, User.all.collect {|c| ["#{c.nombres} #{c.apellidos}", c.id]}, {prompt: false}, {:multiple => true,class: 'form-control chosen-mselect'} %>
+      </div>
+   </div>
+   </div>
+   <div class="row">
+  <div class="col-md-3">
+    
+  <div class="form-group">
+    <%= f.label :prioridad %>
+     <%= f.select 'prioridad', options_for_select(["Alta", "Media","Baja"]), {},{:class => 'form-control'}%>
   </div>
 
-  <div class="field">
-    <%= f.label :descripcion %>
-    <%= f.text_area :descripcion %>
   </div>
-
-  <div class="field">
-    <%= f.label :anexo %>
-    <%= f.text_field :anexo %>
-  </div>
-
-  <div class="field">
+  <div class="col-md-3">
+    <div class="form-group">
     <%= f.label :f_entrega %>
-    <%= f.date_select :f_entrega %>
+    <%= f.date_field :f_entrega, class:"form-control"  %>
+  </div>
+    
+  </div>
+  <div class="col-md-3">
+    <div class="form-group">
+    <%= f.label :anexo %>
+    <%= f.file_field :anexo , class:"form-control" %>
+  </div>
+  </div>
+    <div class="col-md-6">
+    <div class="form-group">
+    <%= f.label "Nombre de la Actividad" %>
+    <%= f.text_field :nombre, class:"form-control"  %>
+  </div>
+  </div>
+    <div class="col-md-2">
+    
+  <div class="form-group">
+    <%= f.label "Enviar" %>
+    <%= f.check_box :estado_envio, class:"form-control" %>
+  </div>
+  </div>
+ 
+  <div class="col-md-9">
+     <div class="form-group">
+    <%= f.label :descripcion %>
+    <%= f.text_area :descripcion, class: 'ck'  %>
   </div>
 
-  <div class="field">
-    <%= f.label :porcentaje %>
-    <%= f.text_field :porcentaje %>
   </div>
+ 
 
-  <div class="field">
-    <%= f.label :estado_envio %>
-    <%= f.check_box :estado_envio %>
-  </div>
+</div>
 
-  <div class="field">
-    <%= f.label :contador %>
-    <%= f.number_field :contador %>
-  </div>
 
-  <div class="field">
-    <%= f.label :codigo %>
-    <%= f.text_field :codigo %>
-  </div>
 
-  <div class="field">
-    <%= f.label :e_vencimiento %>
-    <%= f.text_field :e_vencimiento %>
-  </div>
+  
+
+
+  
+ <%= f.hidden_field :user_id , :value => current_user.id %>
+ 
+  
+<script>
+    $('.chosen-mselect').chosen(
+        {
+
+          allow_single_deselect: true,
+          no_results_text: 'No hay resultados',
+          width: '350px;',
+          placeholder_text_single: "Seleccione una opción",
+          placeholder_text_multiple: "Seleccione una varias opciones"
+
+        });
+      $('.chosen-select').chosen(
+        {
+
+          allow_single_deselect: true,
+          no_results_text: 'No hay resultados',
+          width: '200px;',
+          placeholder_text_single: "Seleccione una opción",
+          placeholder_text_multiple: "Seleccione una varias opciones"
+
+        });
+</script>
+
+
+
+
+  
+
+
+  
 
   <div class="actions">
-    <%= f.submit %>
+    <%= f.submit "Guardar",class: "btn btn-primary"  %>
   </div>
 <% end %>
+
+

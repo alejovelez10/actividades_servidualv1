@@ -1,0 +1,55 @@
+<h2>Editar <%= resource_name.to_s.humanize %></h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= devise_error_messages! %>
+
+<div class="row">
+<div class="col-md-6">
+   <div class="form-group">
+    <%= f.label :email %>
+    <%= f.email_field :email, autofocus: true, class:"form-control" %><br>
+      <div class="form-group">
+    <%= f.label :nombres %>
+    <%= f.text_field :nombres, autofocus: true, class:"form-control" %>
+  </div>
+   <div class="form-group">
+    <%= f.label :apellidos %>
+    <%= f.text_field :apellidos, autofocus: true, class:"form-control" %>
+  </div>
+  </div>
+</div>
+<div class="col-md-6">
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, placeholder:"Deja en blanco si no vas a cambiar de contraseña", class:"form-control" %>
+
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, placeholder:"Deja en blanco si no vas a cambiar de contraseña" , class:"form-control"%>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :current_password %> 
+    <%= f.password_field :current_password, placeholder:"Ingresa tu contraseña para poder editar" , class:"form-control" %>
+  </div>
+
+</div>  
+</div>
+ 
+
+  
+  <div class="actions">
+    <%= f.submit "Editar", class:"btn btn-primary" %>
+  </div>
+<% end %>
+
+
+
+
+<%= link_to "Regresar", :back %>
