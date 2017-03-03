@@ -10,6 +10,16 @@ class Seguimiento < ApplicationRecord
             actividad = Actividad.find(self.actividad_id)
             actividad.porcentaje = self.porcentaje
             actividad.save
+            if self.user_id == actividad.responsable_id
+                
+                actividad.balon = "asignador"
+                actividad.save
+             
+        elsif self.user_id == actividad.user_id
+             actividad.balon = "responsable" 	
+             actividad.save
+          end
+
             if self.cierre 
 
                 actividad.estado_cierre = true

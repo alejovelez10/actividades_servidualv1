@@ -6,8 +6,9 @@ class ActividadsController < ApplicationController
   # GET /actividads.json
     def index
     if current_user.rol == "Admin"
-    @actividads = Actividad.where(estado_cierre: false)
+    @actividads = Actividad.where(estado_cierre: false).order(created_at: :desc)
     @tipo = "Todas las Actividades"
+    @resp = "n/a"
   else
     redirect_to get_act_path
   end
@@ -15,21 +16,25 @@ class ActividadsController < ApplicationController
 
   end
    def get_act
-    @actividads = current_user.actividads.where(estado_envio: true).where(estado_cierre: false)
+     @actividads = Actividad.where(responsable_id: current_user.id).where(estado_envio: true).where(estado_cierre: false).order(created_at: :desc)
+  
     @tipo = "Mis Actividades"
+    @resp = "resp"
     render "index"
   end
     def invitado
 
-    @actividads = Actividad.where(responsable_id: current_user.id).where(estado_envio: true).where(estado_cierre: false)
+     @actividads = current_user.actividads.where(estado_envio: true).where(estado_cierre: false).order(created_at: :desc)
     @tipo = "Actividades Invitado"
+    @resp = "n/a"
     render "index"
   end
 
  def set_act
     if current_user.rol == "Director" ||  current_user.rol == "Admin"
-    @actividads = Actividad.where(user_id: current_user.id).where(estado_cierre: false)
+    @actividads = Actividad.where(user_id: current_user.id).where(estado_cierre: false).order(created_at: :desc)
      @tipo = "Actividades que asigne"
+     @resp = "asig"
       else
     redirect_to get_act_path
    
@@ -66,6 +71,7 @@ def show
     code= "#{tipo}-#{num}-#{ano}" 
     @actividad.codigo= code
     @actividad.consecutivo = num
+    @actividad.balon = "responsable"
     respond_to do |format|
       if @actividad.save
         

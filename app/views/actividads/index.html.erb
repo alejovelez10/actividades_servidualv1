@@ -11,7 +11,9 @@
 
 
     <% @actividads.each do |actividad| %>
-  <p class = "p"><%= link_to 'Ver', actividad %> |
+
+
+  <p class = "p"><%=  (image_tag "https://www.ecured.cu/images/thumb/7/7a/PELOTA_TENIS.jpg/260px-PELOTA_TENIS.jpg", style:"width:30px") if (@resp == "resp" && actividad.balon == "responsable")%><%=  (image_tag "https://www.ecured.cu/images/thumb/7/7a/PELOTA_TENIS.jpg/260px-PELOTA_TENIS.jpg", style:"width:30px") if (@resp == "asig" && actividad.balon == "asignador")%><%= link_to 'Ver', actividad %> |
     <%= link_to 'Editar', edit_actividad_path(actividad) %> |
     <%= link_to 'Eliminar', actividad, method: :delete, data: { confirm: 'Are you sure?' } %></p>
       <div class="row actividad <%=get_venci(actividad.e_vencimiento)%>">
