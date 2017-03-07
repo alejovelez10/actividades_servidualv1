@@ -1,8 +1,9 @@
 <h3>Hola <%=@actividad.responsable.nombres%></h3>
  <p><%=@actividad.user.nombres%> te ha asignado una Actividad</p>
 <hr>
+<p><strong>Codigo:</strong> <%=@actividad.codigo%></p>
 <p><strong>Nombre:</strong> <%=@actividad.nombre%></p>
 
-<p><strong>Descripcion: <%==@actividad.descripcion%></p>
+<p><strong>Descripcion:</strong> <%==@actividad.descripcion%></p>
 <p><strong>Fecha de Entrega:</strong> <%= @actividad.f_entrega%></p>
 <p><strong>Prioridad:</strong> <%==@actividad.prioridad%></p>
