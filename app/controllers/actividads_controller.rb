@@ -44,7 +44,7 @@ end
 
 def user_actividades
 
-if params[:search]
+if params[:search] || params[:search1] || params[:search2]
     @actividads = Actividad.estado_f.where(responsable_id:params[:user]).search(params[:search],params[:search1],params[:search2])
   else
       @actividads = Actividad.estado_f.where(responsable_id:params[:user])
@@ -52,6 +52,7 @@ if params[:search]
 user = User.find(params[:user])
     @tipo = "#{user.nombres} #{user.apellidos}"
     @resp = "n/a"
+    @route = user_actividades_path
 render "index"
 
 end
@@ -78,7 +79,7 @@ end
     if current_user.rol == "Admin"
 
     
-    if params[:search]
+    if params[:search] || params[:search1] || params[:search2]
     @actividads = Actividad.estado_f.search(params[:search],params[:search1],params[:search2])
   else
       @actividads = Actividad.estado_f
@@ -86,6 +87,7 @@ end
 
     @tipo = "Todas las Actividades"
     @resp = "n/a"
+    @route = actividads_path
   else
     redirect_to get_act_path
   end
@@ -93,7 +95,7 @@ end
 
   end
    def get_act
-    if params[:search]
+    if params[:search] || params[:search1] || params[:search2]
            @actividads = Actividad.where(responsable_id: current_user.id).estado_f.search(params[:search],params[:search1],params[:search2])
   else
            @actividads = Actividad.where(responsable_id: current_user.id).estado_f
@@ -101,22 +103,25 @@ end
   end
     @tipo = "Mis Actividades"
     @resp = "resp"
+    @route = get_act_path
     render "index"
   end
     def invitado
- if params[:search]
+ if params[:search] || params[:search1] || params[:search2]
      @actividads = current_user.actividads.where(estado_envio: true).estado_f.search(params[:search],params[:search1],params[:search2])
    else 
      @actividads = current_user.actividads.where(estado_envio: true).estado_f
     end
     @tipo = "Actividades Invitado"
     @resp = "n/a"
+    @route = invitado_path
     render "index"
+
   end
 
  def set_act
     if current_user.rol == "Director" ||  current_user.rol == "Admin"
-if params[:search]
+if params[:search] || params[:search1] || params[:search2]
     @actividads = Actividad.where(user_id: current_user.id).estado_f.search(params[:search],params[:search1],params[:search2])
      else
  @actividads = Actividad.where(user_id: current_user.id).estado_f
@@ -126,6 +131,7 @@ if params[:search]
 
      @tipo = "Actividades que asigne"
      @resp = "asig"
+      @route = set_act_path
       else
     redirect_to get_act_path
    

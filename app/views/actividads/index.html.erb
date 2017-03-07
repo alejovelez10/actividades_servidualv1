@@ -9,10 +9,10 @@
 </div>
 <div class="row busqueda">
    <div class="col-md-12">
-<%= form_tag(actividads_path, :method => "get", id: "search-form") do %>
+<%= form_tag(@route, :method => "get", id: "search-form") do %>
          <!--<%= text_field_tag :search, params[:search], placeholder: "Ingresa texto", class: "form-control search" %>-->
           <%=select_tag 'search1', options_for_select(User.all.collect{ |u| ["#{u.nombres} #{u.apellidos}", u.id, ] }),{:class => "form-control sh1", include_blank: true }%>
-          <%= select_tag 'search2', options_for_select(["Vigente", "Proxima a Vencer", "Vencida"]),{:class => 'form-control sh2', include_blank: true }%>
+          <%= select_tag 'search2', options_for_select(["Vigente", "Proxima", "Vencida"]),{:class => 'form-control sh2', include_blank: true }%>
 
          <%= submit_tag "Buscar", :class => "btn btn-primary" %>
          <% end %>

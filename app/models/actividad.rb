@@ -39,6 +39,9 @@ scope :estado_f, -> { where(estado_cierre: false).order(created_at: :desc) }
 
 def self.search(search, search1, search2)
 
+if search2 == "Proxima"
+search2 = "Proxima a Vencer"
+end
             search1 != "" ? (scope :responsable, -> { where(responsable_id: search1) }) : (scope :responsable, -> { where.not(responsable_id: nil) })
              search2 != "" ? (scope :estado, -> { where(e_vencimiento: search2) }) : (scope :estado, -> { where.not(e_vencimiento: nil) })  
             responsable.estado#.where("nombre like '%#{search}%' or descripcion like '%#{search}%' "  )  
