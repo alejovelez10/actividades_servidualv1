@@ -3,7 +3,8 @@
 
     <%@users.each do |user|%>
     <%= link_to user_actividades_path(user.id) do%>
-		<div class="col-md-4 perfil">
+		  <%user_act = Actividad.where(responsable_id:user.id)%>
+      <div class="col-md-4 perfil">
             <div class="well well-sm well1">
                 <div class="media ">
                     <span class="thumbnail pull-left" href="#">
@@ -14,11 +15,11 @@
                     </span>
                     <div class="media-body">
                         <h4 class="media-heading"><%= user.nombres%> <%= user.apellidos%></h4>
-                		<p class="p-perfil"><span class="label label-primary">Actividades: <%= user.actividads.count %></span> <span class="label label-primary">Abiertas: <%= user.actividads.where(estado_cierre: true).count %></span> <span class="label label-primary"> Cerradas: <%= user.actividads.where(estado_cierre: false).count %></span></p>
+                		<p class="p-perfil"><span class="label label-primary">Actividades: <%=user_act.count %></span> <span class="label label-primary">Abiertas: <%= user_act.where(estado_cierre: false).count %></span> <span class="label label-primary"> Cerradas: <%= user_act.where(estado_cierre: true).count %></span></p>
                         <pclass="p-perfil">
-                             <span class="btn btn-xs btn-default vig"> Vigentes: <%= user.actividads.where(estado_cierre: false).where(e_vencimiento: "Vigente").count %></span>
-                            <span class="btn btn-xs btn-default prox"> Proximas:<%= user.actividads.where(estado_cierre: false).where(e_vencimiento: "Vigente").count %></span>
-                           <span class="btn btn-xs btn-default ven"> Vencidas: <%= user.actividads.where(estado_cierre: false).where(e_vencimiento: "Proxima a Vencer").count %></span>
+                             <span class="btn btn-xs btn-default vig"> Vigentes: <%= user_act.where(estado_cierre: false).where(e_vencimiento: "Vigente").count %></span>
+                            <span class="btn btn-xs btn-default prox"> Proximas:<%= user_act.where(estado_cierre: false).where(e_vencimiento: "Vigente").count %></span>
+                           <span class="btn btn-xs btn-default ven"> Vencidas: <%= user_act.where(estado_cierre: false).where(e_vencimiento: "Proxima a Vencer").count %></span>
                         </p>
                     </div>
                 </div>
