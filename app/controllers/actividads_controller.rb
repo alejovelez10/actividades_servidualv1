@@ -7,6 +7,7 @@ class ActividadsController < ApplicationController
 
  respond_to :json
   def get_events
+if current_user.rol == "Admin"
     @task = Actividad.all
     events = []
     @task.each do |task|
@@ -18,6 +19,24 @@ class ActividadsController < ApplicationController
       events << {:id => task.id, :title => "#{task.nombre} ", :start => "#{task.f_entrega}" , :color => "#{@color}"}
     end
     render :text => events.to_json
+
+else
+
+  if current_user.rol == "Admin"
+    @task = Actividad.where(responsable_id: current_user.id)
+    events = []
+    @task.each do |task|
+      if task.e_vencimiento == "Vigente"
+        @color = "green"
+      else
+          @color = "red"
+      end
+      events << {:id => task.id, :title => "#{task.nombre} ", :start => "#{task.f_entrega}" , :color => "#{@color}"}
+    end
+    render :text => events.to_json
+end
+
+
   end
 
 
