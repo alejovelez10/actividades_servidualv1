@@ -22,7 +22,7 @@ if current_user.rol == "Admin"
 
 else
 
-  if current_user.rol == "Admin"
+ 
     @task = Actividad.where(responsable_id: current_user.id)
     events = []
     @task.each do |task|
