@@ -22,9 +22,9 @@ module ApplicationHelper
 
             "proxima"
 
-    else
+    elsif x == "Vencida"
 
-            "vencida"
+            ""
     end
             
                 

@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require fullcalendar
   *= require chosen
  */
 .app{
@@ -47,14 +48,52 @@
 {
       border-right: 10px solid #19964b;
     border-left: 10px solid #19964b;
+
 }
 .proxi
 {
       border-right: 10px solid #dcc52a;
     border-left: 10px solid #dcc52a;
+
 }
 .vencida
 {
           border-left: 10px solid #dc422a;
         border-left: 10px solid #dc422a;
       }
+
+
+
+.vigentet
+{
+      background: #19964b !important;
+    color:white !important;
+}
+.proxit
+{
+      background: #dcc52a!important;
+   color:white !important;
+    
+}
+.vencidat
+{
+         background:  #dc422a !important;
+        color:white!important;
+      }
+
+.segui
+{
+      background: #2eb7ff;
+    color: white;
+    padding: 10px;
+}
+
+.link-blanco
+{
+  color:white;
+}
+.hr-10
+{
+      margin-top: 10px;
+    margin-bottom: 10px;
+}

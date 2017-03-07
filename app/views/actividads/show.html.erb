@@ -1,4 +1,6 @@
-<%= link_to 'Back', actividads_path %>
+<%= link_to actividads_path do %>
+<i class="fa fa-arrow-circle-left" aria-hidden="true" style = "font-size:26px;color:#2eb7ff"></i>
+<%end%>
 
       <div class="row actividad">
 
@@ -25,7 +27,7 @@
     <p><strong>Estado:</strong> <%= get_estado(@actividad.estado_cierre)%></p>
   </div>
   <div class="col-md-3">
-    <p><strong>¿Enviada?:</strong> <%= @actividad.estado_envio%> </p>
+    <p><strong>¿Enviada?:</strong> <%= get_envio(@actividad.estado_envio)%> </p>
   </div>
     <div class="col-md-3">
     <p><strong>Avance:</strong> <%= @actividad.porcentaje%> %</p>
@@ -41,9 +43,9 @@
 
      <div class="row">
       <div class="col-md-3">
-    <p><strong>Anexo:</strong> <%= link_to "Anexo", @actividad.anexo_url %> </p>
+    <p><strong>Anexo:</strong> <%= (link_to "Anexo", @actividad.anexo_url, class: "link-blue") if @actividad.anexo_url %> </p>
   </div>
-  <div class="col-md-3">
+  <div class="col-md-3 ">
     <p><strong>Fecha de Entrega:</strong> <%= get_date(@actividad.f_entrega) %></p>
   </div>
 
@@ -78,10 +80,15 @@
 
 
 
+<div class="row">
+  
 
-<h3 class="text-center">Seguimientos (<%=@actividad.seguimientos.count%>) <%= link_to 'Nuevo', new_seguimiento_path(@actividad), remote:true, class:"btn btn-primary" %> 
+<h3 class="text-center segui">Seguimientos (<%=@actividad.seguimientos.count%>) <%= link_to  new_seguimiento_path(@actividad), remote:true, class:"link-blanco" do %>
+<i class="fa fa-plus" aria-hidden="true"></i>
+
+<%end%> 
  </h3>
-
+</div>
 
 <% @actividad.seguimientos.each do |seg|%>
 <div class="row actividad">
@@ -95,7 +102,7 @@
     <p><strong>% de Avance: </strong><%= seg.porcentaje %></p>
   </div>
   <div class="col-md-3">
-    <p><strong>Anexo:</strong> <%= (link_to "Adjunto", seg.anexo_url) if seg.anexo_url %></p>
+    <p><strong>Anexo:</strong> <%= (link_to "Adjunto", seg.anexo_url, class: "link-blue") if seg.anexo_url %></p>
   </div>
  
   <div class="col-md-12">
@@ -103,5 +110,5 @@
   </div>
 
     </div>
-
+   <hr class="hr-10">
     <%end%>

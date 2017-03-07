@@ -58,7 +58,16 @@
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
       
-        <li><%= link_to "Inicio", root_path%></li>
+        <li><%= link_to root_path do %>
+          
+          <i class="fa fa-calendar" aria-hidden="true"></i>
+<%end%>
+  <li><%= link_to usuarios_path do %>
+          
+        <i class="fa fa-user" aria-hidden="true"></i>
+
+<%end%>
+        </li>
        </ul>
         <ul class="nav navbar-nav navbar-right">
         

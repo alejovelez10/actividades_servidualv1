@@ -34,6 +34,10 @@ gem 'chosen-rails'
 gem 'fog', '~> 1.38'
 gem 'ckeditor_rails', '~> 4.5', '>= 4.5.10'
 gem 'figaro'
+gem 'annotate'
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
+gem "mini_magick"
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

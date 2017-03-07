@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row">
+
+    <%@users.each do |user|%>
+    <%= link_to user_actividades_path(user.id) do%>
+		<div class="col-md-4 perfil">
+            <div class="well well-sm well1">
+                <div class="media ">
+                    <span class="thumbnail pull-left" href="#">
+                        <% if user.avatar_url%>
+                        <%= image_tag user.avatar_url(:thumb)%>
+                        <%else%>
+                        <img class="media-object img-perfil" src="https://tribearound.s3.amazonaws.com/static/img/no_user_logo.jpeg"><%end%>
+                    </span>
+                    <div class="media-body">
+                        <h4 class="media-heading"><%= user.nombres%> <%= user.apellidos%></h4>
+                		<p class="p-perfil"><span class="label label-primary">Actividades: <%= user.actividads.count %></span> <span class="label label-primary">Abiertas: <%= user.actividads.where(estado_cierre: true).count %></span> <span class="label label-primary"> Cerradas: <%= user.actividads.where(estado_cierre: false).count %></span></p>
+                        <pclass="p-perfil">
+                             <span class="btn btn-xs btn-default vig"> Vigentes: <%= user.actividads.where(estado_cierre: false).where(e_vencimiento: "Vigente").count %></span>
+                            <span class="btn btn-xs btn-default prox"> Proximas:<%= user.actividads.where(estado_cierre: false).where(e_vencimiento: "Vigente").count %></span>
+                           <span class="btn btn-xs btn-default ven"> Vencidas: <%= user.actividads.where(estado_cierre: false).where(e_vencimiento: "Proxima a Vencer").count %></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%end%>
+<%end%>
+	</div>
+</div>
+
+
+<style>
+.p-perfil
+{
+    margin: 4px !important;
+}
+.img-perfil
+{
+    width:70px !important;
+}
+.vig{
+        background: #5ba268;
+    color: white !important;
+
+}
+.prox{
+        background: orange;
+    color: white !important;
+
+}
+.ven
+{
+
+        background: #e86c6c;
+    color: white !important;
+
+
+}
+.perfil
+{
+
+   -webkit-transition: box-shadow 0.3s; /* For Safari 3.1 to 6.0 */
+    transition: box-shadow 0.3s;
+  }
+
+ .perfil:hover
+  {
+  
+  
+    box-shadow: rgb(136, 136, 136) 0px 0px 8px 0px;
+    padding: 
+  }
+  .well1
+  {
+    margin-bottom: 0px !important;
+
+  }
+</style>

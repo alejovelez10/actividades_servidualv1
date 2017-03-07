@@ -7,16 +7,31 @@
     <%= link_to 'Nueva Actividad', new_actividad_path, class:"btn btn-primary" %>
   </div>
 </div>
+<div class="row busqueda">
+   <div class="col-md-12">
+<%= form_tag(actividads_path, :method => "get", id: "search-form") do %>
+         <!--<%= text_field_tag :search, params[:search], placeholder: "Ingresa texto", class: "form-control search" %>-->
+          <%=select_tag 'search1', options_for_select(User.all.collect{ |u| ["#{u.nombres} #{u.apellidos}", u.id, ] }),{:class => "form-control sh1", include_blank: true }%>
+          <%= select_tag 'search2', options_for_select(["Vigente", "Proxima a Vencer", "Vencida"]),{:class => 'form-control sh2', include_blank: true }%>
 
+         <%= submit_tag "Buscar", :class => "btn btn-primary" %>
+         <% end %>
+
+  </div>  </div>
 
 
     <% @actividads.each do |actividad| %>
 
 
-  <p class = "p"><%=  (image_tag "https://www.ecured.cu/images/thumb/7/7a/PELOTA_TENIS.jpg/260px-PELOTA_TENIS.jpg", style:"width:30px") if (@resp == "resp" && actividad.balon == "responsable")%><%=  (image_tag "https://www.ecured.cu/images/thumb/7/7a/PELOTA_TENIS.jpg/260px-PELOTA_TENIS.jpg", style:"width:30px") if (@resp == "asig" && actividad.balon == "asignador")%><%= link_to 'Ver', actividad %> |
+  <p class = "p"><%=  (image_tag "https://www.ecured.cu/images/thumb/7/7a/PELOTA_TENIS.jpg/260px-PELOTA_TENIS.jpg", style:"width:30px") if (@resp == "resp" && actividad.balon == "responsable")%><%=  (image_tag "https://www.ecured.cu/images/thumb/7/7a/PELOTA_TENIS.jpg/260px-PELOTA_TENIS.jpg", style:"width:30px") if (@resp == "asig" && actividad.balon == "asignador")%> |
     <%= link_to 'Editar', edit_actividad_path(actividad) %> |
     <%= link_to 'Eliminar', actividad, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+  
+<%= link_to  actividad_path(actividad) do %>
+
       <div class="row actividad <%=get_venci(actividad.e_vencimiento)%>">
+  
+
    <div class="row">
         
          
@@ -59,7 +74,7 @@
  <div class="col-md-6">
     <p><strong>Actividad: </strong><%= actividad.nombre%> </p>
   </div>
-   <div class="col-md-3">
+   <div class="col-md-3 <%=get_venci(actividad.e_vencimiento)%>t" >
     <p><strong>F Entrega:</strong> <%= get_date(actividad.f_entrega) %></p>
   </div>
   <div class="col-md-3">
@@ -69,9 +84,74 @@
 </div>
 <br>
     <% end %>
+
+    <% end %>
  
 
 
 
 
 
+<script>
+   $(document).on('turbolinks:load',function() {
+      $('.sh1').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '200px',
+            placeholder_text_single: "Responsable",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
+
+      $('.sh2').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '200px',
+            placeholder_text_single: "Estado",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
+
+    
+        });
+     $('.sh1').val(<%=params[:search1]%>) ;
+     $('.sh2').val(<%=params[:search2]%>) ;
+
+
+
+</script>
+
+<style>
+   .shi
+   {
+   height:  30px !important;
+   color:gray !important;
+   font-size: 10px !important;
+   }
+   .shi1
+   {
+   width: 60px;
+   display: inline-block;
+   height:  30px !important;
+   color:gray !important;
+   font-size: 10px !important;
+   padding: 6px 2px;
+   text-align: center;
+   }
+   .busqueda
+   {
+        display: block;
+    padding: 10px;
+    background: #e8e8e8;
+   }
+   .search
+{
+  width:200px !important;
+  height: 27px!important;
+  display:inline-block !important;
+}
+</style>

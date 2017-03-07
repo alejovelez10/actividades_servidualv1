@@ -12,14 +12,26 @@ margin:0px;
     border: 0;
     border-top: 1px solid #eee;
 }
-.actividad
-{
-padding: 10px;
+
+
+ .actividad
+  {
+    
+    padding: 10px;
+    color: gray;
+    
     border: 1px solid #cecece;
-    margin-right: 5px !important;
-    background:#f1f1f1;
-        color: gray;
-}
+  font-size: 13px;
+     -webkit-transition: box-shadow 0.3s; /* For Safari 3.1 to 6.0 */
+    transition: box-shadow 0.3s;
+  }
+ .actividad:hover
+  {
+  
+    box-shadow: rgb(136, 136, 136) 0px 0px 8px 0px;
+  }
+
+
 .p
 {
   margin:0px;

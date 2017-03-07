@@ -4,9 +4,67 @@ class ActividadsController < ApplicationController
 
   # GET /actividads
   # GET /actividads.json
+
+ respond_to :json
+  def get_events
+    @task = Actividad.all
+    events = []
+    @task.each do |task|
+      if task.e_vencimiento == "Vigente"
+        @color = "green"
+      else
+          @color = "red"
+      end
+      events << {:id => task.id, :title => "#{task.nombre} ", :start => "#{task.f_entrega}" , :color => "#{@color}"}
+    end
+    render :text => events.to_json
+  end
+
+
+
+
+def user_actividades
+
+if params[:search]
+    @actividads = Actividad.estado_f.where(responsable_id:params[:user]).search(params[:search],params[:search1],params[:search2])
+  else
+      @actividads = Actividad.estado_f.where(responsable_id:params[:user])
+  end
+user = User.find(params[:user])
+    @tipo = "#{user.nombres} #{user.apellidos}"
+    @resp = "n/a"
+render "index"
+
+end
+
+
+def usuarios
+@users = User.all
+
+
+end
+
+
+
+
+
+
+
+
+
+
+
+
     def index
     if current_user.rol == "Admin"
-    @actividads = Actividad.where(estado_cierre: false).order(created_at: :desc)
+
+    
+    if params[:search]
+    @actividads = Actividad.estado_f.search(params[:search],params[:search1],params[:search2])
+  else
+      @actividads = Actividad.estado_f
+  end
+
     @tipo = "Todas las Actividades"
     @resp = "n/a"
   else
@@ -16,15 +74,22 @@ class ActividadsController < ApplicationController
 
   end
    def get_act
-     @actividads = Actividad.where(responsable_id: current_user.id).where(estado_envio: true).where(estado_cierre: false).order(created_at: :desc)
-  
+    if params[:search]
+           @actividads = Actividad.where(responsable_id: current_user.id).estado_f.search(params[:search],params[:search1],params[:search2])
+  else
+           @actividads = Actividad.where(responsable_id: current_user.id).estado_f
+
+  end
     @tipo = "Mis Actividades"
     @resp = "resp"
     render "index"
   end
     def invitado
-
-     @actividads = current_user.actividads.where(estado_envio: true).where(estado_cierre: false).order(created_at: :desc)
+ if params[:search]
+     @actividads = current_user.actividads.where(estado_envio: true).estado_f.search(params[:search],params[:search1],params[:search2])
+   else 
+     @actividads = current_user.actividads.where(estado_envio: true).estado_f
+    end
     @tipo = "Actividades Invitado"
     @resp = "n/a"
     render "index"
@@ -32,7 +97,14 @@ class ActividadsController < ApplicationController
 
  def set_act
     if current_user.rol == "Director" ||  current_user.rol == "Admin"
-    @actividads = Actividad.where(user_id: current_user.id).where(estado_cierre: false).order(created_at: :desc)
+if params[:search]
+    @actividads = Actividad.where(user_id: current_user.id).estado_f.search(params[:search],params[:search1],params[:search2])
+     else
+ @actividads = Actividad.where(user_id: current_user.id).estado_f
+     end
+
+
+
      @tipo = "Actividades que asigne"
      @resp = "asig"
       else
@@ -72,6 +144,7 @@ def show
     @actividad.codigo= code
     @actividad.consecutivo = num
     @actividad.balon = "responsable"
+     @actividad.e_vencimiento = "Sin Enviar"
     respond_to do |format|
       if @actividad.save
         
