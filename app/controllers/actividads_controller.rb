@@ -162,7 +162,7 @@ def show
     code= "#{tipo}-#{num}-#{ano}" 
     @actividad.codigo= code
     @actividad.consecutivo = num
-    @actividad.balon = "responsable"
+   
      @actividad.e_vencimiento = "Sin Enviar"
     respond_to do |format|
       if @actividad.save
