@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170303192155) do
+ActiveRecord::Schema.define(version: 20170308131910) do
 
   create_table "actividads", force: :cascade do |t|
     t.integer  "consecutivo"
@@ -43,12 +43,12 @@ ActiveRecord::Schema.define(version: 20170303192155) do
   create_table "seguimientos", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "actividad_id"
-    t.integer  "descripcion"
     t.integer  "porcentaje"
     t.boolean  "cierre"
     t.string   "anexo"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
+    t.string   "descripcion"
   end
 
   create_table "users", force: :cascade do |t|
