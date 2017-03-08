@@ -16,10 +16,10 @@
                     <div class="media-body">
                         <h4 class="media-heading"><%= user.nombres%> <%= user.apellidos%></h4>
                 		<p class="p-perfil"><span class="label label-primary">Actividades: <%=user_act.count %></span> <span class="label label-primary">Abiertas: <%= user_act.where(estado_cierre: false).count %></span> <span class="label label-primary"> Cerradas: <%= user_act.where(estado_cierre: true).count %></span></p>
-                        <pclass="p-perfil">
-                             <span class="btn btn-xs btn-default vig"> Vigentes: <%= user_act.where(estado_cierre: false).where(e_vencimiento: "Vigente").count %></span>
-                            <span class="btn btn-xs btn-default prox"> Proximas:<%= user_act.where(estado_cierre: false).where(e_vencimiento: "Proxima a Vencer").count %></span>
-                           <span class="btn btn-xs btn-default ven"> Vencidas: <%= user_act.where(estado_cierre: false).where(e_vencimiento: "Vencida").count %></span>
+                        <p class="p-perfil">
+                             <span class="btn btn-xs btn-default vig"> Vig: <%= user_act.where(estado_cierre: false).where(e_vencimiento: "Vigente").count %></span>
+                            <span class="btn btn-xs btn-default prox"> Prox:<%= user_act.where(estado_cierre: false).where(e_vencimiento: "Proxima a Vencer").count %></span>
+                           <span class="btn btn-xs btn-default ven"> Ven: <%= user_act.where(estado_cierre: false).where(e_vencimiento: "Vencida").count %></span>
                         </p>
                     </div>
                 </div>
