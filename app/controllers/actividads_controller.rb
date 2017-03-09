@@ -58,6 +58,23 @@ render "index"
 end
 
 
+def actividades_cerradas
+
+if params[:search] || params[:search1] || params[:search2]
+    @actividads = Actividad.where(estado_cierre: true)
+  else
+      @actividads = Actividad.where(estado_cierre: true)
+  end
+    @tipo = "Actividades Cerradas"
+    @resp = "n/a"
+    @route = actividades_cerradas_path
+render "index"
+
+end
+
+
+
+
 def usuarios
 @users = User.all
 

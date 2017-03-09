@@ -93,6 +93,7 @@
             <ul class="nav nav-list">
               <% if current_user.rol == "Admin"%>
               <li><%= link_to "Todas las Actividades", actividads_path  %></li>
+              <li><%= link_to "Todas Cerradas", actividades_cerradas_path  %></li>
               <%end%>
 
              

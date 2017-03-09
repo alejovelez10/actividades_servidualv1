@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   root 'welcome#home'
     
   get "misactividades", to: "actividads#get_act", as: "get_act"
+   get "actividades_cerradas", to: "actividads#actividades_cerradas", as: "actividades_cerradas"
   get "actividades", to: "actividads#set_act" , as: "set_act"
   get "user_actividades/:user", to: "actividads#user_actividades" , as: "user_actividades"
   get "usuarios", to: "actividads#usuarios" , as: "usuarios"
