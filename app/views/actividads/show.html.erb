@@ -66,12 +66,11 @@
     <p><strong>Actividad: </strong><%= @actividad.nombre%> </p>
   </div>
 <div class="col-md-8">
-    <strong>Descripción:</strong> <%==   @actividad.descripcion %> 
+   <div class="descnum"> <strong>Descripción:</strong> <%==   @actividad.descripcion %> </div>
   </div>
  </div>
 
-    
-  
+
 </div>
 
 
@@ -112,3 +111,12 @@
     </div>
    <hr class="hr-10">
     <%end%>
+<style>
+.descnum
+{
+  max-height: 200px !important;
+    overflow: auto;
+    height: auto;
+}
+  
+</style>
