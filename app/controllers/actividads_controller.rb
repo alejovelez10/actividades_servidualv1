@@ -154,19 +154,13 @@ def show
   def create
     @actividad = Actividad.new(actividad_params)
     @actividad.estado_cierre  = false
-    num = Actividad.where(tipo: @actividad.tipo).maximum(:consecutivo)
+    num = Actividad.maximum(:consecutivo)
     if num != nil
         num = num + 1
 
     else
         num = 1001
     end
-    ano = Time.now.year.to_s
-    ano = ano.remove("20") 
-
-    tipo = get_tipo(@actividad.tipo)
-    code= "#{tipo}-#{num}-#{ano}" 
-    @actividad.codigo= code
     @actividad.consecutivo = num
     @actividad.balon = "responsable"
      @actividad.e_vencimiento = "Sin Enviar"
