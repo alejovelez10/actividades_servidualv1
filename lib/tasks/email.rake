@@ -12,15 +12,15 @@ namespace :email do
 
             if actividad.contador < 5 && actividad.contador > 0
             actividad.e_vencimiento = "Proxima a Vencer"
-            ActividadMailer.noty_report(user,actividad, "proximo").deliver
+            #ActividadMailer.noty_report(user,actividad, "proximo").deliver
             
         elsif actividad.contador < 0
 
-            ActividadMailer.noty_report(user,actividad,"vencido").deliver
+            #ActividadMailer.noty_report(user,actividad,"vencido").deliver
               actividad.e_vencimiento = "Vencida"
         elsif actividad.contador == 0
             actividad.e_vencimiento = "Proxima a Vencer"
-            ActividadMailer.noty_report(user,actividad, "hoy").deliver
+            #ActividadMailer.noty_report(user,actividad, "hoy").deliver
 
         end
 actividad.save
