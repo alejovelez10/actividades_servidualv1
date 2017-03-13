@@ -10,7 +10,7 @@ namespace :email do
         actividad.contador = (time / 60 / 60/ 24) + 1
         actividad.save
 
-            if actividad.contador < 5 && actividad.contador_seg > 0
+            if actividad.contador < 5 && actividad.contador > 0
             actividad.e_vencimiento = "Proxima a Vencer"
             ActividadMailer.noty_report(user,actividad, "proximo").deliver
             
