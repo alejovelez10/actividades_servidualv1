@@ -16,15 +16,15 @@ module ApplicationHelper
  def get_venci(x)
     if x == "Vigente"
         
-            "vigente"
+            "vigentet"
 
     elsif x == "Proxima a Vencer"
 
-            "proxima"
+            "proximat"
 
     elsif x == "Vencida"
 
-            ""
+            "vencidat"
     end
             
                 
