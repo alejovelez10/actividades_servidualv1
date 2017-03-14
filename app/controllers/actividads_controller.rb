@@ -13,7 +13,11 @@ if current_user.rol == "Admin"
     @task.each do |task|
       if task.e_vencimiento == "Vigente"
         @color = "green"
+      elsif task.e_vencimiento == "Proxima a Vencer"
+
+      @color = "orange" 
       else
+        
           @color = "red"
       end
       events << {:id => task.id, :title => "#{task.nombre} ", :start => "#{task.f_entrega}" , :color => "#{@color}"}
@@ -123,6 +127,10 @@ end
     @route = get_act_path
     render "index"
   end
+
+
+
+
     def invitado
  if params[:search] || params[:search1] || params[:search2]
      @actividads = current_user.actividads.where(estado_envio: true).estado_f.search(params[:search],params[:search1],params[:search2])
@@ -135,6 +143,9 @@ end
     render "index"
 
   end
+
+
+
 
  def set_act
     if current_user.rol == "Director" ||  current_user.rol == "Admin"
