@@ -30,6 +30,8 @@ class Actividad < ApplicationRecord
 	has_many :seguimientos
     mount_uploader :anexo, AnexoActividadUploader
 	after_save :enviar
+    validates :f_entrega, presence: true
+    validates :responsable_id, presence: true
 
 
 scope :estado_f, -> { where(estado_cierre: false).order(created_at: :desc) }

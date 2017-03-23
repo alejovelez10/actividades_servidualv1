@@ -94,7 +94,7 @@
               <% if current_user.rol == "Admin"%>
               <li><%= link_to "Todas las Actividades", actividads_path  %></li>
                 <%end%>
-              <li><%= link_to "Actividades Cerradas", actividades_cerradas_path  %></li>
+
             
 
              
@@ -103,6 +103,7 @@
               <%end%>
                <li><%= link_to "Mis Actividades", get_act_path %></li>
                 <li><%= link_to "Actividades Invitado", invitado_path %></li>
+                 <li><%= link_to "Actividades Cerradas", actividades_cerradas_path  %></li>
             </ul>
           </div><!--/.well -->
         </div>

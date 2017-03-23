@@ -1,7 +1,7 @@
 <%= form_for(actividad) do |f| %>
   <% if actividad.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(actvidad.errors.count, "error") %> prohibited this actvidad from being saved:</h2>
+      <h2><%= pluralize(actividad.errors.count, "error") %> prohibited this actvidad from being saved:</h2>
 
       <ul>
       <% actividad.errors.full_messages.each do |message| %>
@@ -71,7 +71,7 @@
     
   <div class="form-group">
     <%= f.label "Enviar" %>
-    <%= f.check_box :estado_envio, class:"form-control" %>
+    <%= f.check_box :estado_envio, {:checked=>true , class:"form-control"} %>
   </div>
   </div>
  
