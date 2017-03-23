@@ -38,7 +38,7 @@
         
          
   <div class="col-md-3">
-    <p><strong>Consecutivo:</strong> <%= actividad.consecutivo %></p>
+    <p><strong><%= actividad.tipo %> - <%= actividad.consecutivo %></strong></p>
   </div>
   <div class="col-md-3">
     <p><strong>F Creacion:</strong> <%= get_date(actividad.created_at)%></p>
@@ -47,7 +47,7 @@
     <p><strong>Prioridad: </strong><%= actividad.prioridad %></p>
   </div>
   <div class="col-md-3">
-    <p><strong>Tipo:</strong> <%= actividad.tipo %></p>
+    <p><strong>Asigno:</strong> <%= actividad.user.nombres %></p>
   </div>
     
 
@@ -80,7 +80,8 @@
     <p><strong>F Entrega:</strong> <%= get_date(actividad.f_entrega) %></p>
   </div>
   <div class="col-md-3">
-    <p><strong>Anexo:</strong> <%= link_to "Anexo", actividad.anexo_url %> </p>
+
+    <p><strong>Anexo:</strong> <%= (link_to "Anexo.#{actividad.anexo.file.extension }", actividad.anexo_url , style:"color:#357ebd") if actividad.anexo_url %> </p>       
   </div>
   </div>
 </div>

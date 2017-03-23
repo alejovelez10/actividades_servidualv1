@@ -8,7 +8,7 @@
         
          
   <div class="col-md-3">
-    <p><strong>Consecutivo:</strong> <%= @actividad.consecutivo %></p>
+    <p><strong><%= @actividad.tipo %>-<%= @actividad.consecutivo %></strong></p>
   </div>
    <div class="col-md-3">
     <p><strong>Consecutivo:</strong> <%= get_date(@actividad.created_at) %></p>
@@ -17,7 +17,7 @@
     <p><strong>Prioridad: </strong><%= @actividad.prioridad %></p>
   </div>
   <div class="col-md-3">
-    <p><strong>Tipo:</strong> <%= @actividad.tipo %></p>
+    <p><strong>Asigno: </strong><%= @actividad.user.nombres%> </p>
   </div>
   </div>
   <hr class="hr">
@@ -43,7 +43,8 @@
 
      <div class="row">
       <div class="col-md-3">
-    <p><strong>Anexo:</strong> <%= (link_to "Anexo", @actividad.anexo_url, class: "link-blue") if @actividad.anexo_url %> </p>
+    
+    <p><strong>Anexo:</strong> <%= (link_to "Anexo.#{@actividad.anexo.file.extension }", @actividad.anexo_url , style:"color:#357ebd") if @actividad.anexo_url %></p>
   </div>
   <div class="col-md-3 ">
     <p><strong>Fecha de Entrega:</strong> <%= get_date(@actividad.f_entrega) %></p>
@@ -81,12 +82,13 @@
 
 <div class="row">
   
-
-<h3 class="text-center segui">Seguimientos (<%=@actividad.seguimientos.count%>) <%= link_to  new_seguimiento_path(@actividad), remote:true, class:"link-blanco" do %>
+<%= link_to  new_seguimiento_path(@actividad), remote:true, class:"link-blanco" do %>
+<h3 class="text-center segui">Seguimientos (<%=@actividad.seguimientos.count%>) 
 <i class="fa fa-plus" aria-hidden="true"></i>
 
-<%end%> 
+
  </h3>
+ <%end%> 
 </div>
 
 <% @actividad.seguimientos.each do |seg|%>
@@ -101,7 +103,7 @@
     <p><strong>% de Avance: </strong><%= seg.porcentaje %></p>
   </div>
   <div class="col-md-3">
-    <p><strong>Anexo:</strong> <%= (link_to "Adjunto", seg.anexo_url, class: "link-blue") if seg.anexo_url %></p>
+    <p><strong>Anexo:</strong> <%= (link_to "Anexo.#{seg.anexo.file.extension }", seg.anexo_url , style:"color:#357ebd") if seg.anexo_url %></p>
   </div>
  
   <div class="col-md-12">
@@ -120,3 +122,5 @@
 }
   
 </style>
+
+

@@ -65,10 +65,26 @@ end
 def actividades_cerradas
 
 if params[:search] || params[:search1] || params[:search2]
-    @actividads = Actividad.where(estado_cierre: true)
+  
+  if current_user.rol ="" "Admin"
+
+    @actividads = Actividad.where(estado_cierre: true).search(params[:search],params[:search1],params[:search2])
+  elsif current_user.rol == "Director"
+      
+    @actividads = Actividad.where(estado_cierre: true).where(user_id: current_user.id).or(where(responsable_id: current_user.id)).search(params[:search],params[:search1],params[:search2])
+
+
+    else
+     @actividads = Actividad.where(estado_cierre: true).where(responsable_id: current_user.id).search(params[:search],params[:search1],params[:search2])
+
+
+     end
+
   else
       @actividads = Actividad.where(estado_cierre: true)
   end
+
+
     @tipo = "Actividades Cerradas"
     @resp = "n/a"
     @route = actividades_cerradas_path
