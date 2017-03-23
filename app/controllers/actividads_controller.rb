@@ -66,7 +66,7 @@ def actividades_cerradas
 
 if params[:search] || params[:search1] || params[:search2]
   
-  if current_user.rol ="" "Admin"
+  if current_user.rol == "Admin"
 
     @actividads = Actividad.where(estado_cierre: true).search(params[:search],params[:search1],params[:search2])
   elsif current_user.rol == "Director"
