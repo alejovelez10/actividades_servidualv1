@@ -1,0 +1,32 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tipos de documentos</h1>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Codigo</th>
+      <th>Frecuencia</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @document_types.each do |document_type| %>
+      <tr>
+        <td><%= document_type.nombre %></td>
+        <td><%= document_type.codigo %></td>
+        <td><%= document_type.frecuencia %></td>
+     
+        <td><%= link_to 'Ver', document_type %></td>
+        <td><%= link_to 'Editar', edit_document_type_path(document_type) %></td>
+        <td><%= link_to 'Borrar', document_type, method: :delete, data: { confirm: 'Esta Seguro?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Nuevo Tipo de Documento', new_document_type_path %>

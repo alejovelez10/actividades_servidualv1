@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Documents</h1>
+
+<table class= "table">
+  <thead>
+    <tr>
+     <th><i class="fa fa-calendar" aria-hidden="true"></i>
+ Creacion</th>
+      <th>Obra</th>
+      <th>Creo</th>
+      <th><i class="fa fa-calendar" aria-hidden="true"></i>
+ Documento</th>
+      <th>Anexo</th>
+      <th>Tipo</th>
+
+      <th>Descripcion</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @documents.each do |document| %>
+      <tr>
+       <td><%= get_date(document.created_at) %></td>
+        <td><%= document.obra %></td>
+        <td><%= document.user.nombres %> <%= document.user.apellidos %></td>
+        <td><%= get_date(document.document_date) %></td>
+        <td><%= (link_to "Anexo.#{document.anexo.file.extension }", document.anexo_url , style:"color:#357ebd") if document.anexo_url %></td>
+        <td><%= document.document_type_id %></td>
+ 
+        <td><%= document.description %></td>
+        <td><%= link_to  document, :class => "opciones" do %>
+               <i class="fa fa-eye" aria-hidden="true"></i>
+               <% end %>
+               <%= link_to  edit_document_path(document), :class => "opciones" do %>
+               <i class="fa fa-pencil" aria-hidden="true"></i>
+               <% end %>
+               <%= link_to  document,  method: :delete, data: { confirm: 'Are you sure?' }, :class => "opciones" do %>
+               <i class="fa fa-trash" aria-hidden="true"></i>
+               <% end %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Document', new_document_path %>
+
+
+<style>
+.opciones
+    {
+    color:#7a7a7a;
+    margin-right:10px;
+    font-size:16px;
+    }
+     .opciones:focus
+    {
+    color:#7a7a7a;
+    
+    }
+     .opciones:hover
+    {
+   text-decoration:none;
+   color:#7a7a7a !important;
+    }
+  
+</style>

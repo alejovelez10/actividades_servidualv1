@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Obra:</strong>
+  <%= @document.obra %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @document.user_id %>
+</p>
+
+<p>
+  <strong>Document date:</strong>
+  <%= @document.document_date %>
+</p>
+
+<p>
+  <strong>Anexo:</strong>
+  <%= @document.anexo %>
+</p>
+
+<p>
+  <strong>Document type:</strong>
+  <%= @document.document_type_id %>
+</p>
+
+<p>
+  <strong>Sub document type:</strong>
+  <%= @document.sub_document_type_id %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @document.description %>
+</p>
+
+<%= link_to 'Edit', edit_document_path(@document) %> |
+<%= link_to 'Back', documents_path %>

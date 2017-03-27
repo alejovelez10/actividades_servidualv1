@@ -1,0 +1,42 @@
+# == Schema Information
+#
+# Table name: rols
+#
+#  id           :integer          not null, primary key
+#  name         :string
+#  description  :text
+#  act_admin    :boolean
+#  act_basico   :boolean
+#  act_director :boolean
+#  doc_admin    :boolean
+#  doc_basico   :boolean
+#  doc          :string
+#  director     :boolean
+#  user_id      :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  description: MyText
+  act_admin: false
+  act_basico: false
+  act_director: false
+  doc_admin: false
+  doc_basico: false
+  doc: MyString
+  director: false
+
+two:
+  name: MyString
+  description: MyText
+  act_admin: false
+  act_basico: false
+  act_director: false
+  doc_admin: false
+  doc_basico: false
+  doc: MyString
+  director: false

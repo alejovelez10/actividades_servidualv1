@@ -16,6 +16,14 @@
     <%= f.label :apellidos %>
     <%= f.text_field :apellidos, autofocus: true, class:"form-control" %>
   </div>
+   <div class="field">
+    <%= f.label "Rol" %>
+   <%= f.select :rol_id,
+   Rol.all.map { |u| ["#{u.name}", u.id] },
+               { include_blank: false },
+               { class: 'form-control chosen-select' }
+%>
+</div>
     <div class="form-group">
     <%= f.label "Foto" %>
     <%= f.file_field :avatar, class:"form-control" %>

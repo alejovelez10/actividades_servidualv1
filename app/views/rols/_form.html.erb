@@ -1,0 +1,62 @@
+<%= form_for(rol) do |f| %>
+  <% if rol.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(rol.errors.count, "error") %> prohibited this rol from being saved:</h2>
+
+      <ul>
+      <% rol.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+<div class="row">
+  <div class="col-md-6 form-group">
+    <%= f.label "Nombre" %>
+    <%= f.text_field :name, class:"form-control" %>
+  </div>
+
+  <div class="col-md-6 form-group">
+    <%= f.label "Descripcion" %>
+    <%= f.text_area :description, class:"form-control" %>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-md-2 form-group">
+    <%= f.label :act_admin %>
+    <%= f.check_box :act_admin %>
+  </div>
+
+  <div class="col-md-2 form-group">
+    <%= f.label :act_basico %>
+    <%= f.check_box :act_basico %>
+  </div>
+
+  <div class="col-md-2  form-group">
+    <%= f.label :act_director %>
+    <%= f.check_box :act_director %>
+  </div>
+
+  <div class="col-md-2 form-group">
+    <%= f.label :doc_admin %>
+    <%= f.check_box :doc_admin %>
+  </div>
+
+  <div class="col-md-2 form-group">
+    <%= f.label :doc_basico %>
+    <%= f.check_box :doc_basico %>
+  </div>
+
+
+  <div class="col-md-2 form-group">
+    <%= f.label "Doc Director" %>
+    <%= f.check_box :director %>
+  </div>
+</div>
+  
+
+  <div class="actions">
+    <%= f.submit "Guardar", class: "btn btn-primary" %>
+  </div>
+<% end %>

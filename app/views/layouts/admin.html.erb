@@ -62,12 +62,19 @@
           
           <i class="fa fa-calendar" aria-hidden="true"></i>
 <%end%>
-<%if current_user.rol == "Admin"%>
+<%if current_user.rol.act_admin %>
   <li><%= link_to usuarios_path do %>
           
         <i class="fa fa-user" aria-hidden="true"></i>
 
 <%end%>
+<%end%>
+
+  <li><%= link_to documents_path do %>
+          
+        <i class="fa fa-file" aria-hidden="true"></i>
+
+
 <%end%>
         </li>
        </ul>
@@ -91,19 +98,30 @@
           <div class="well sidebar-nav">
             <h3>Menu</h3>
             <ul class="nav nav-list">
-              <% if current_user.rol == "Admin"%>
+
+            <% if controller_name == "users" || controller_name == "actividads" || controller_name =="welcome"%>
+              <% if current_user.rol.act_admin%>
               <li><%= link_to "Todas las Actividades", actividads_path  %></li>
                 <%end%>
 
             
 
              
-              <% if current_user.rol == "Admin" || current_user.rol == "Director"%>
+              <% if current_user.rol.act_admin || current_user.rol.act_director%>
               <li><%= link_to "Actividades que Asigne", set_act_path  %></li>
               <%end%>
                <li><%= link_to "Mis Actividades", get_act_path %></li>
                 <li><%= link_to "Actividades Invitado", invitado_path %></li>
                  <li><%= link_to "Actividades Cerradas", actividades_cerradas_path  %></li>
+              
+            <%else%>              
+            
+              <li><%= link_to "Documentos", documents_path  %></li>
+                
+
+
+              <%end%>
+
             </ul>
           </div><!--/.well -->
         </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170308131910) do
+ActiveRecord::Schema.define(version: 20170327204734) do
 
   create_table "actividads", force: :cascade do |t|
     t.integer  "consecutivo"
@@ -40,6 +40,42 @@ ActiveRecord::Schema.define(version: 20170308131910) do
     t.index ["user_id"], name: "index_actividads_users_on_user_id"
   end
 
+  create_table "document_types", force: :cascade do |t|
+    t.string   "nombre"
+    t.string   "codigo"
+    t.integer  "frecuencia"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "documents", force: :cascade do |t|
+    t.integer  "obra"
+    t.integer  "user_id"
+    t.date     "document_date"
+    t.string   "anexo"
+    t.integer  "document_type_id"
+    t.integer  "sub_document_type_id"
+    t.text     "description"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
+  create_table "rols", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.boolean  "act_admin"
+    t.boolean  "act_basico"
+    t.boolean  "act_director"
+    t.boolean  "doc_admin"
+    t.boolean  "doc_basico"
+    t.string   "doc"
+    t.boolean  "director"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "seguimientos", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "actividad_id"
@@ -64,11 +100,11 @@ ActiveRecord::Schema.define(version: 20170308131910) do
     t.string   "last_sign_in_ip"
     t.string   "nombres"
     t.string   "apellidos"
-    t.string   "rol"
     t.string   "avatar"
     t.string   "f_nacimiento"
     t.datetime "created_at",                          null: false
     t.datetime "updated_at",                          null: false
+    t.integer  "rol_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

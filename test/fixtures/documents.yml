@@ -1,0 +1,35 @@
+# == Schema Information
+#
+# Table name: documents
+#
+#  id                   :integer          not null, primary key
+#  obra                 :integer
+#  user_id              :integer
+#  document_date        :date
+#  anexo                :string
+#  document_type_id     :integer
+#  sub_document_type_id :integer
+#  description          :text
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  obra: 1
+  user_id: 1
+  document_date: 2017-03-27
+  anexo: MyString
+  document_type_id: 1
+  sub_document_type_id: 1
+  description: MyText
+
+two:
+  obra: 1
+  user_id: 1
+  document_date: 2017-03-27
+  anexo: MyString
+  document_type_id: 1
+  sub_document_type_id: 1
+  description: MyText

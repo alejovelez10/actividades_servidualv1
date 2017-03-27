@@ -1,0 +1,90 @@
+<%= form_for(document) do |f| %>
+  <% if document.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(document.errors.count, "error") %> prohibited this document from being saved:</h2>
+
+      <ul>
+      <% document.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<div class="row">
+<div class="col-md-8 form-group">
+  <div class="col-md-6 form-group">
+    <%= f.label :obra %>
+        <%= f.select 'obra', options_for_select(@arr), {},{:class => 'form-control chosen-select'}%>
+  </div>
+   <div class="col-md-6 form-group">
+    <%= f.label "Tipo de Documento" %>
+    <%= f.select :document_type_id,
+   DocumentType.all.map { |u| ["#{u.nombre}", u.id] },
+               { include_blank: false },
+               { class: 'form-control chosen-select' }
+%>
+  </div>
+
+  </div>
+
+</div>
+<div class="row">
+<div class="col-md-8 form-group">
+  <div class="col-md-6 form-group">
+    <%= f.label "Fecha del Documento" %>
+    <%= f.date_field :document_date, class: "form-control" %>
+  </div>
+  <div class="col-md-6 form-group">
+    <%= f.label :anexo %>
+    <%= f.file_field :anexo %>
+  </div>
+<div class="row">
+ </div> 
+   <div class="col-md-6 form-group">
+    <%= f.label "Descripcion" %>
+    <%= f.text_area :description, class: "form-control" %>
+  </div>
+ </div> 
+ </div>
+
+
+    <%= f.hidden_field :user_id, value: current_user.id %>
+  
+
+  
+
+
+
+
+
+
+
+  <div class="actions">
+    <%= f.submit "Guardar", class: "btn btn-primary" %>
+  </div>
+<% end %>
+<script>
+    $('.chosen-mselect').chosen(
+        {
+
+          allow_single_deselect: true,
+          no_results_text: 'No hay resultados',
+          width: '350px;',
+          placeholder_text_single: "Seleccione una opción",
+          placeholder_text_multiple: "Seleccione una varias opciones"
+
+        });
+      $('.chosen-select').chosen(
+        {
+
+          allow_single_deselect: true,
+          no_results_text: 'No hay resultados',
+          width: '350px;',
+          placeholder_text_single: "Seleccione una opción",
+          placeholder_text_multiple: "Seleccione una varias opciones"
+
+        });
+</script>
+
+

@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: document_types
+#
+#  id         :integer          not null, primary key
+#  nombre     :string
+#  codigo     :string
+#  frecuencia :integer
+#  user_id    :integer
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  nombre: MyString
+  codigo: MyString
+  frecuencia: 1
+  user_id: 1
+
+two:
+  nombre: MyString
+  codigo: MyString
+  frecuencia: 1
+  user_id: 1

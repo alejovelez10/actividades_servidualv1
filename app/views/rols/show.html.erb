@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rol.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @rol.description %>
+</p>
+
+<p>
+  <strong>Act admin:</strong>
+  <%= @rol.act_admin %>
+</p>
+
+<p>
+  <strong>Act basico:</strong>
+  <%= @rol.act_basico %>
+</p>
+
+<p>
+  <strong>Act director:</strong>
+  <%= @rol.act_director %>
+</p>
+
+<p>
+  <strong>Doc admin:</strong>
+  <%= @rol.doc_admin %>
+</p>
+
+<p>
+  <strong>Doc basico:</strong>
+  <%= @rol.doc_basico %>
+</p>
+
+<p>
+  <strong>Doc:</strong>
+  <%= @rol.doc %>
+</p>
+
+<p>
+  <strong>Director:</strong>
+  <%= @rol.director %>
+</p>
+
+<%= link_to 'Edit', edit_rol_path(@rol) %> |
+<%= link_to 'Back', rols_path %>

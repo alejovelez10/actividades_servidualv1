@@ -8,7 +8,7 @@ protected
 
   def configure_permitted_parameters
     [:account_update,:sign_up].each do |metodo|
-    devise_parameter_sanitizer.permit(metodo, keys: [:nombres,:apellidos,:rol, :avatar])
+    devise_parameter_sanitizer.permit(metodo, keys: [:nombres,:apellidos, :avatar,:rol_id])
     end
   end
 

@@ -38,6 +38,8 @@ gem 'annotate'
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
 gem "mini_magick"
+gem 'httparty', '~> 0.13.7'
+
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password

@@ -188,7 +188,16 @@ def show
 
   def new
     @actividad = Actividad.new
-  end
+
+
+ #  console.log(zohoalejovm10view295.Lista_Empleados);
+  #  $scope.nombre = zohoalejovm10view295.Lista_Empleados[0].NOMBRES;
+
+
+
+
+
+end
   # GET /actividads/1/edit
   def edit
   end
@@ -297,3 +306,6 @@ end
       params.require(:actividad).permit(:consecutivo, :tipo, :user_id, :balon,:prioridad, :responsable_id, :nombre, :descripcion, :anexo, :f_entrega, :porcentaje, :estado_envio, :contador, :codigo, :e_vencimiento, :user_ids => [])
     end
 end
+
+
+

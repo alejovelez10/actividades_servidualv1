@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nombre:</strong>
+  <%= @document_type.nombre %>
+</p>
+
+<p>
+  <strong>Codigo:</strong>
+  <%= @document_type.codigo %>
+</p>
+
+<p>
+  <strong>Frecuencia:</strong>
+  <%= @document_type.frecuencia %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @document_type.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_document_type_path(@document_type) %> |
+<%= link_to 'Back', document_types_path %>

@@ -20,6 +20,7 @@
 #  f_nacimiento           :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  rol_id                 :integer
 #
 
 class User < ApplicationRecord
@@ -30,4 +31,6 @@ class User < ApplicationRecord
            has_and_belongs_to_many :actividads
              mount_uploader :avatar, AvatarUploader
   has_many :seguimientos
+  has_many :documents
+  belongs_to :rol
 end

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
  
+  resources :document_types
+  resources :rols
+  resources :documents
   devise_for :users
   resources :actividads do 
         get :get_events, on: :collection

@@ -15,7 +15,15 @@
     <%= f.label :apellidos %><br />
     <%= f.text_field :apellidos, autofocus: true %>
   </div>
- <%= f.select 'rol', options_for_select([ "Basico", "Admin","Director"]), {},{:class => ''}%>
+  <div class="field">
+    <%= f.label "Rol" %>
+   <%= f.select :rol_id,
+   Rol.all.map { |u| ["#{u.name}", u.id] },
+               { include_blank: false },
+               { class: 'form-control chosen-select' }
+%>
+</div>
+ 
   <div class="field">
     <%= f.label :password %>
     <% if @minimum_password_length %>

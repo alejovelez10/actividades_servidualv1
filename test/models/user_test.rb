@@ -20,6 +20,7 @@
 #  f_nacimiento           :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  rol_id                 :integer
 #
 
 require 'test_helper'
