@@ -7,7 +7,7 @@ class ActividadsController < ApplicationController
 
  respond_to :json
   def get_events
-if current_user.rol == "Admin"
+if current_user.rol.act_admin
     @task = Actividad.all
     events = []
     @task.each do |task|
@@ -66,10 +66,10 @@ def actividades_cerradas
 
 if params[:search] || params[:search1] || params[:search2]
   
-  if current_user.rol == "Admin"
+  if current_user.rol.act_admin
 
     @actividads = Actividad.where(estado_cierre: true).search(params[:search],params[:search1],params[:search2])
-  elsif current_user.rol == "Director"
+  elsif current_user.rol.act_director
       
     @actividads = Actividad.where(estado_cierre: true).where(user_id: current_user.id).or(where(responsable_id: current_user.id)).search(params[:search],params[:search1],params[:search2])
 
@@ -113,7 +113,7 @@ end
 
 
     def index
-    if current_user.rol == "Admin"
+    if current_user.rol.act_admin
 
     
     if params[:search] || params[:search1] || params[:search2]
@@ -164,7 +164,7 @@ end
 
 
  def set_act
-    if current_user.rol == "Director" ||  current_user.rol == "Admin"
+    if current_user.rol.act_director ||  current_user.rol.act_admin
 if params[:search] || params[:search1] || params[:search2]
     @actividads = Actividad.where(user_id: current_user.id).estado_f.search(params[:search],params[:search1],params[:search2])
      else
