@@ -65,6 +65,8 @@
   </div>
 <% end %>
 <script>
+$(document).on('turbolinks:load',function() {
+
     $('.chosen-mselect').chosen(
         {
 
@@ -85,6 +87,7 @@
           placeholder_text_multiple: "Seleccione una varias opciones"
 
         });
+             });
 </script>
 
 
