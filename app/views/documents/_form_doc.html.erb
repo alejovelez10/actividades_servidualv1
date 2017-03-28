@@ -1,0 +1,85 @@
+<div id="myModal" class="modal fade">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title">Crear Tipo de Documento</h4>
+      </div>
+<form clasd = "myForm">
+      <div class="modal-body">
+<div class="form-group">
+    <label for="email">Nombre</label>
+    <input type="text" class="form-control" id="nombre">
+  </div>
+  <div class="form-group">
+    <label for="email">Codigo</label>
+    <input type="text" class="form-control" id="codigo">
+  </div>
+  <div class="form-group">
+    <label for="email">Frecuencia</label>
+    <input type="text" class="form-control" id="frecuencia">
+  </div>
+
+
+
+
+ 
+<br>
+
+      <div class="modal-footer text-center">
+       
+        
+       <input class = "btn btn-primary" type="button" onclick="myFunction()" value="Crear" data-dismiss="modal">      </div>
+</form>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+  
+
+function myFunction() {
+    $(".myForm").submit();
+
+    var n = $('#nombre').val();
+    var c = $('#codigo').val();
+    var f = $('#frecuencia').val();
+      
+     $.ajax({
+     url :"/create_document",
+     type: "POST",
+     data: {
+        "nombre": n,
+        "codigo": c,
+        "frecuencia":f
+     },
+     success: function(response){
+      
+
+     },
+     error:function(response){
+         
+     }
+ });  
+
+    //$.post("/create_document?a=10000000000", function(data) {
+          //}
+
+
+      //   })
+   
+
+}
+</script>
+
+
+
+
+
+
+
+
+  
+ 

@@ -1,0 +1,22 @@
+
+//$('.pri').append('<option value="<%=@id%>"><%=@name%></option>');
+
+ //         $('.chosen-results').append('<li class="active-result result-selected" data-option-array-index="<%=@id%>"><%=@name%> </li>');
+          
+        
+
+   //      $('.pri').addClass("chosen-select")
+       
+$('#my-modal').modal('hide');
+
+       $('.field').html('<%= j render "field", documents: @documents %>');
+        $('.pri').addClass("chosen-select");
+
+         $('.chosen-select').chosen(
+        {
+
+          allow_single_deselect: true,
+          no_results_text: 'No results matched',
+          width: '250px'
+        });
+

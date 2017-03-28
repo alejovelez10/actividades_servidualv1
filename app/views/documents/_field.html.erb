@@ -1,0 +1,32 @@
+
+
+
+<select class="form-control sel pri chosen-select" name="document[document_type_id]" id="document_document_type_id">
+<% @documents.each do  |doc|%>
+<option value="<%=doc.id%>"><%=doc.nombre%></option>
+<%end%>
+</select>
+
+    <button type="button" class="bt " data-toggle="modal" data-target="#myModal"><i class="fa fa-plus" aria-hidden="true"></i>
+</button>
+
+
+<style>
+.bt
+{
+    padding: 0px 0px;
+    background: white;
+    color: #46b8da;
+    border: none;
+}	
+</style>
+
+<script>
+	$('.bt').click(function() {
+		// body...
+
+	 $('#nombre').val("");
+   $('#codigo').val("");
+   $('#frecuencia').val("");
+	});
+</script>

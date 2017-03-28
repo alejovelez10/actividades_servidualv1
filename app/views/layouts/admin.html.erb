@@ -117,7 +117,9 @@
             <%else%>              
             
               <li><%= link_to "Documentos", documents_path  %></li>
-                
+             <% if current_user.rol.act_admin || current_user.rol.act_director%>
+             <li><%= link_to "Tipos Documentos", document_types_path  %></li>
+                 <%end%>
 
 
               <%end%>

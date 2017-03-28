@@ -19,5 +19,6 @@ Rails.application.routes.draw do
   get "actividades_invitado", to: "actividads#invitado" , as: "invitado"
   get "new_seguimiento/:actividad", to: "actividads#new_seguimiento" , as: "new_seguimiento"
   post "create_seguimiento", to: "actividads#create_seguimiento" , as: "create_seguimiento"
+  post "create_document", to: "documents#create_document" , as: "create_document"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

@@ -24,6 +24,8 @@ class DocumentsController < ApplicationController
   # GET /documents/new
   def new
     @document = Document.new
+      @documents = DocumentType.all
+
     response = HTTParty.get('https://creator.zoho.com/api/json/erp-servidual-ltda1/view/PLANILLA_UNIFICADA_TODOS?authtoken=8e7d9b1a50d940bf61830620b3a505af&zc_ownername=alejovm10&scope=creatorapi&A_O>=2016')
 bod = response.body.sub('var zohoalejovm10view2432 =', '')
 bod = bod.gsub(';', '')
@@ -32,9 +34,9 @@ bod  = JSON.parse bod
 bod = bod["S_Codigo"]
 @arr  = Array.new
 bod.each do |value|
-    @arr << value["Consecutivo1"] 
+ @arr << value["Consecutivo1"] 
     
-  end
+end
 #puts bod
 
   end
@@ -82,6 +84,19 @@ bod.each do |value|
       format.json { head :no_content }
     end
   end
+
+def create_document
+  
+   a =  DocumentType.new(nombre:params[:nombre],user_id:current_user.id, codigo:params[:codigo], frecuencia:params[:frecuencia])
+   a.save
+   @documents = DocumentType.all
+
+
+
+end
+
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

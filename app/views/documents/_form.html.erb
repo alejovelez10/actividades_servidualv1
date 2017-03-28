@@ -16,24 +16,27 @@
   <div class="col-md-6 form-group">
     <%= f.label :obra %>
         <%= f.select 'obra', options_for_select(@arr), {},{:class => 'form-control chosen-select'}%>
+
   </div>
    <div class="col-md-6 form-group">
     <%= f.label "Tipo de Documento" %>
-    <%= f.select :document_type_id,
-   DocumentType.all.map { |u| ["#{u.nombre}", u.id] },
-               { include_blank: false },
-               { class: 'form-control chosen-select' }
-%>
-  </div>
+    <div class="field">
+    <%= render "field" , f: f  %>  
 
-  </div>
 
-</div>
-<div class="row">
-<div class="col-md-8 form-group">
+    </div>
+   <%= render "form_doc"%>
+  
+
+
+
+    
+  </div> 
+
+
   <div class="col-md-6 form-group">
     <%= f.label "Fecha del Documento" %>
-    <%= f.date_field :document_date, class: "form-control" %>
+    <%= f.date_field :document_date, :value => ( action_name == 'new' ? Time.now.strftime("%Y-%m-%d"): @document.f_compromiso.strftime("%Y-%m-%d")), class: "form-control" %>
   </div>
   <div class="col-md-6 form-group">
     <%= f.label :anexo %>
@@ -87,6 +90,25 @@ $(document).on('turbolinks:load',function() {
           placeholder_text_multiple: "Seleccione una varias opciones"
 
         });
+
+
+ 
+
+     
+
+         $('.chosen-container ').click(function(){
+
+          //$.get("/create_document", function(data) {
+          //}
+
+
+         })
+
+       
+
+
+
+
              });
 </script>
 
