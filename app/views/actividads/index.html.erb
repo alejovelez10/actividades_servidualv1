@@ -4,7 +4,7 @@
 <h2 class= "color-blue"><%=@tipo%>(<%=@actividads.count%>)</h2>    
   </div>
   <div class="col-md-4 text-right">
-  <%if current_user.rol.act_admin  || current_user.rol.act_director "%>
+  <%if current_user.rol.act_admin  || current_user.rol.act_director %>
     <%= link_to 'Nueva Actividad', new_actividad_path, class:"btn btn-primary" %>
     <%end%>
   </div>
