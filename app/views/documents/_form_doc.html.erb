@@ -37,42 +37,6 @@
 </div>
 </div>
 
-<script>
-  
-
-function myFunction() {
-    $(".myForm").submit();
-
-    var n = $('#nombre').val();
-    var c = $('#codigo').val();
-    var f = $('#frecuencia').val();
-      
-     $.ajax({
-     url :"/create_document",
-     type: "POST",
-     data: {
-        "nombre": n,
-        "codigo": c,
-        "frecuencia":f
-     },
-     success: function(response){
-      
-
-     },
-     error:function(response){
-         
-     }
- });  
-
-    //$.post("/create_document?a=10000000000", function(data) {
-          //}
-
-
-      //   })
-   
-
-}
-</script>
 
 
 

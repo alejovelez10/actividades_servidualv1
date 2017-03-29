@@ -86,6 +86,37 @@ eventClick: function(event, jsEvent, view) {
             placeholder_text_multiple: "Seleccione una varias opciones"
       
           });
+$('.sh').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '200px',
+            placeholder_text_single: "Obra",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
+$('.sh11').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '200px',
+            placeholder_text_single: "Tipo",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
+
+      $('.sh22').chosen(
+          {
+      
+            allow_single_deselect: true,
+            no_results_text: 'No hay resultados',
+            width: '200px',
+            placeholder_text_single: "Usuario",
+            placeholder_text_multiple: "Seleccione una varias opciones"
+      
+          });
 
 
 });

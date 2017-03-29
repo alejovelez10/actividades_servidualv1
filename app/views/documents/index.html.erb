@@ -1,6 +1,24 @@
 <p id="notice"><%= notice %></p>
+<div class="row">
+<div class="col-md-4">
+  <h1>Documents </h1>
+</div>
+  <div class="col-md-8 text-right">
+   <%= will_paginate @documents%>
+</div>
+  
+</div>
 
-<h1>Documents</h1>
+
+<%= form_tag(@route, :method => "get", id: "search-form") do %>
+         <!--<%= text_field_tag :search, params[:search], placeholder: "Ingresa texto", class: "form-control search" %>-->
+
+         <%=select_tag 'search', options_for_select(@arr),{:class => "form-control sh", include_blank: true }%>
+          <%=select_tag 'search1', options_for_select(DocumentType.all.collect{ |u| ["#{u.nombre}", u.id, ] }),{:class => "form-control sh11", include_blank: true }%>
+          <%=select_tag 'search2', options_for_select(User.all.collect{ |u| ["#{u.nombres} #{u.apellidos}", u.id, ] }),{:class => "form-control sh22", include_blank: true }%>
+         <%= submit_tag "Buscar", :class => "btn btn-primary" %>
+         <% end %>
+
 
 <table class= "table">
   <thead>
@@ -27,7 +45,7 @@
         <td><%= document.user.nombres %> <%= document.user.apellidos %></td>
         <td><%= get_date(document.document_date) %></td>
         <td><%= (link_to "Anexo.#{document.anexo.file.extension }", document.anexo_url , style:"color:#357ebd") if document.anexo_url %></td>
-        <td><%= document.document_type_id %></td>
+        <td><%= document.document_type.nombre %></td>
  
         <td><%= document.description %></td>
         <td><%= link_to  document, :class => "opciones" do %>
@@ -46,9 +64,17 @@
 
 <br>
 
-<%= link_to 'New Document', new_document_path %>
+<%= link_to 'Nuevo Documento', new_document_path, class: "btn btn-primary" %>
+
+<script>
+
+     $('.sh11').val(<%=params[:search1]%>) ;
+     $('.sh22').val(<%=params[:search2]%>) ;
+     $('.sh').val(<%=params[:search]%>) ;
 
 
+
+</script>
 <style>
 .opciones
     {
