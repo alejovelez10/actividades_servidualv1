@@ -36,7 +36,7 @@
 
   <div class="col-md-6 form-group">
     <%= f.label "Fecha del Documento" %>
-    <%= f.date_field :document_date, :value => ( action_name == 'new' ? Time.now.strftime("%Y-%m-%d"): @document.f_compromiso.strftime("%Y-%m-%d")), class: "form-control" %>
+    <%= f.date_field :document_date, :value => ( action_name == 'new' ? Time.now.strftime("%Y-%m-%d"): @document.document_date.strftime("%Y-%m-%d")), class: "form-control" %>
   </div>
   <div class="col-md-6 form-group">
     <%= f.label :anexo %>
