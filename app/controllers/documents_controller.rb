@@ -34,12 +34,12 @@ if params[:search] || params[:search1] || params[:search2]
 
 @documents1 = Document.where(user_id: current_user.id).search(params[:search],params[:search1],params[:search2])
  else
-  @documents1 = Document.where(user_id: current_user.id).paginate(page: params[:page],:per_page => 2)
+  @documents1 = Document.where(user_id: current_user.id).paginate(page: params[:page],:per_page => 30)
 end
 
       end
 
-@documents = @documents1.paginate(page: params[:page],:per_page => 2)
+@documents = @documents1.paginate(page: params[:page],:per_page => 30)
 @route = documents_path
 
     
