@@ -72,7 +72,7 @@ end
 
   # GET /documents/1/edit
   def edit
-      @documents = DocumentType.all
+     @documents = DocumentType.all
 
     response = HTTParty.get('https://creator.zoho.com/api/json/erp-servidual-ltda1/view/PLANILLA_UNIFICADA_TODOS?authtoken=8e7d9b1a50d940bf61830620b3a505af&zc_ownername=alejovm10&scope=creatorapi&A_O>=2016')
 bod = response.body.sub('var zohoalejovm10view2432 =', '')
@@ -83,6 +83,8 @@ bod = bod["S_Codigo"]
 @arr  = Array.new
 bod.each do |value|
  @arr << value["Consecutivo1"] 
+    
+end
   end
 
   # POST /documents
