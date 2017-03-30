@@ -15,7 +15,7 @@
 <div class="col-md-8 form-group">
   <div class="col-md-6 form-group">
     <%= f.label :obra %>
-        <%= f.select 'obra', options_for_select(@arr), {},{:class => 'form-control chosen-select'}%>
+        <%= f.select 'obra', options_for_select(@arr, @document.obra), {},{:class => 'form-control chosen-select'}%>
 
   </div>
    <div class="col-md-6 form-group">
