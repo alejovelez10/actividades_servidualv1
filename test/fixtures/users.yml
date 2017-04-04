@@ -15,7 +15,6 @@
 #  last_sign_in_ip        :string
 #  nombres                :string
 #  apellidos              :string
-#  rol                    :string
 #  avatar                 :string
 #  f_nacimiento           :string
 #  created_at             :datetime         not null
