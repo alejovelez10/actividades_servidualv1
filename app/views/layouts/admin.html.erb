@@ -60,19 +60,19 @@
       
         <li><%= link_to root_path do %>
           
-          <i class="fa fa-calendar" aria-hidden="true"></i>
+          <i class="fa fa-calendar" aria-hidden="true"></i> Tareas
 <%end%>
 <%if current_user.rol.act_admin %>
   <li><%= link_to usuarios_path do %>
           
-        <i class="fa fa-user" aria-hidden="true"></i>
+        <i class="fa fa-user" aria-hidden="true"></i> Usuarios
 
 <%end%>
 <%end%>
 
   <li><%= link_to documents_path do %>
           
-        <i class="fa fa-file" aria-hidden="true"></i>
+        <i class="fa fa-file" aria-hidden="true"></i> Documentos
 
 
 <%end%>
