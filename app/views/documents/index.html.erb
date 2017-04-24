@@ -15,7 +15,8 @@
 
          <%=select_tag 'search', options_for_select(@arr),{:class => "form-control sh", include_blank: true }%>
           <%=select_tag 'search1', options_for_select(DocumentType.all.collect{ |u| ["#{u.nombre}", u.id, ] }),{:class => "form-control sh11", include_blank: true }%>
-          <%=select_tag 'search2', options_for_select(User.all.collect{ |u| ["#{u.nombres} #{u.apellidos}", u.id, ] }),{:class => "form-control sh22", include_blank: true }%>
+        <%if current_user.rol == "Admin total"%>
+          <%=select_tag 'search2', options_for_select(User.all.collect{ |u| ["#{u.nombres} #{u.apellidos}", u.id, ] }),{:class => "form-control sh22", include_blank: true }%><%end%>
          <%= submit_tag "Buscar", :class => "btn btn-primary" %>
          <% end %>
 
