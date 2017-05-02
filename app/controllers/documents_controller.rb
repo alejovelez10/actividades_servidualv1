@@ -16,7 +16,10 @@ bod.each do |value|
  @arr << value["Consecutivo1"] 
     
 end
-
+@size = 0
+Document.all.each do |doc|
+  @size = doc.anexo.size + @size
+  end 
 
   if current_user.rol.doc_admin || current_user.rol.director 
 

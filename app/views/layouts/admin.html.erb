@@ -92,14 +92,10 @@
   </div><!-- /.container-fluid -->
 </nav>
 
-    <div class="container-fluid">
-      <div class="row">
-      <div class="col-lg-2">
-          <div class="well sidebar-nav">
-            <h3>Menu</h3>
-            <ul class="nav nav-list">
 
-            <% if controller_name == "users" || controller_name == "actividads" || controller_name =="welcome"%>
+
+ <ul class="nav nav-tabs" role="tablist" style = "margin-top:20px">
+  <% if controller_name == "users" || controller_name == "actividads" || controller_name =="welcome"%>
               <% if current_user.rol.act_admin%>
               <li><%= link_to "Todas las Actividades", actividads_path  %></li>
                 <%end%>
@@ -124,10 +120,12 @@
 
               <%end%>
 
-            </ul>
-          </div><!--/.well -->
-        </div>
-        <div class="col-lg-10">
+  </ul>
+<br>
+    <div class="container-fluid">
+      <div class="row">
+    
+        <div class="col-lg-12">
    
           <%= yield %>
         </div>

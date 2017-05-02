@@ -1,7 +1,6 @@
-<p id="notice"><%= notice %></p>
 <div class="row">
 <div class="col-md-4">
-  <h1>Documents </h1>
+  <h2>Documentos (<%= (@size.to_f/1000000).round(2).to_s + "MB" %>)</h2>
 </div>
   <div class="col-md-8 text-right">
    <%= will_paginate @documents%>
@@ -24,6 +23,7 @@
 <table class= "table">
   <thead>
     <tr>
+    <th></th>
      <th><i class="fa fa-calendar" aria-hidden="true"></i>
  Creacion</th>
       <th>Obra</th>
@@ -31,33 +31,56 @@
       <th><i class="fa fa-calendar" aria-hidden="true"></i>
  Documento</th>
       <th>Anexo</th>
+       <th>size</th>
       <th>Tipo</th>
 
       <th>Descripcion</th>
-      <th colspan="3"></th>
+      
     </tr>
   </thead>
 
   <tbody>
     <% @documents.each do |document| %>
       <tr>
+           <td><!--<%= link_to  document, :class => "opciones" do %>
+               <i class="fa fa-eye" aria-hidden="true"></i>
+               <% end %>-->
+              
+
+<div class="dropdown sort">
+  <a id="dLabel" href ="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="fa fa-sort-desc" aria-hidden="true"></i>
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="dLabel">
+
+     <li><%= link_to  edit_document_path(document), :class => "opciones" do %>
+               <i class="fa fa-pencil" aria-hidden="true"></i> Editar
+               <% end %></li>
+           <li> <%= link_to  document,  method: :delete, data: { confirm: 'Are you sure?' }, :class => "opciones" do %>
+               <i class="fa fa-trash" aria-hidden="true"></i> Eliminar
+               <% end %></li>
+  </ul></div>
+
+
+
+
+
+
+
+
+
+               </td>
        <td><%= get_date(document.created_at) %></td>
         <td><%= document.obra %></td>
         <td><%= document.user.nombres %> <%= document.user.apellidos %></td>
         <td><%= get_date(document.document_date) %></td>
-        <td><%= (link_to "Anexo.#{document.anexo.file.extension }", document.anexo_url , style:"color:#357ebd") if document.anexo_url %></td>
+        
+        <td><%= (link_to "#{document.anexo.file.filename}", document.anexo_url , style:"color:#357ebd") if document.anexo_url %></td>
+        <td><%= (link_to "#{((document.anexo.size.to_f)/1000000).round(2)}MB", document.anexo_url , style:"color:#357ebd") if document.anexo_url %></td>
         <td><%= document.document_type.nombre %></td>
  
         <td><%= document.description %></td>
-        <td><%= link_to  document, :class => "opciones" do %>
-               <i class="fa fa-eye" aria-hidden="true"></i>
-               <% end %>
-               <%= link_to  edit_document_path(document), :class => "opciones" do %>
-               <i class="fa fa-pencil" aria-hidden="true"></i>
-               <% end %>
-               <%= link_to  document,  method: :delete, data: { confirm: 'Are you sure?' }, :class => "opciones" do %>
-               <i class="fa fa-trash" aria-hidden="true"></i>
-               <% end %></td>
+   
       </tr>
     <% end %>
   </tbody>

@@ -98,3 +98,11 @@
       margin-top: 10px;
     margin-bottom: 10px;
 }
+
+
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    padding-left: 40px;
+    padding-right: 40px;
+}
