@@ -16,10 +16,10 @@ bod.each do |value|
  @arr << value["Consecutivo1"] 
     
 end
-#@size = 0
-#Document.all.each do |doc|
- # @size = doc.anexo.size + @size
-  #end 
+@size = 0
+Document.all.each do |doc|
+  @size = doc.anexo.size + @size
+  end 
 
   if current_user.rol.doc_admin || current_user.rol.director 
 
@@ -111,7 +111,7 @@ end
   def update
     respond_to do |format|
       if @document.update(document_params)
-        format.html { redirect_to @document, notice: 'Document was successfully updated.' }
+        format.html { redirect_to documents_path, notice: 'Document was successfully updated.' }
         format.json { render :show, status: :ok, location: @document }
       else
         format.html { render :edit }
