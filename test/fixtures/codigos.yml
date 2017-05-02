@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  consecutivo: 1
+  nombre_proyecto: MyString
+  codigo_completo: MyString
+  cliente: MyString
+
+two:
+  consecutivo: 1
+  nombre_proyecto: MyString
+  codigo_completo: MyString
+  cliente: MyString

@@ -32,6 +32,7 @@ module ApplicationHelper
 
 def get_date(fecha)
    
+if fecha != nil
 
     ds = fecha.strftime("%w") #Dia de la semana
     y = fecha.strftime("%Y") #Año
@@ -41,6 +42,7 @@ def get_date(fecha)
     dias = {"1" => "Domingo", "2" => "Lunes","3"=>"Martes","4" => "Miercoles", "5" => "Jueves","6"=> "Viernes" ,"0" =>"Sabado"}
     return  dm + " " + meses[m] + ", " + y 
 #dias[ds] + ", " + 
+end
 end
 
 end

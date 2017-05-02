@@ -4,22 +4,12 @@ class DocumentsController < ApplicationController
   # GET /documents
   # GET /documents.json
   def index
+ 
 
- response = HTTParty.get('https://creator.zoho.com/api/json/erp-servidual-ltda1/view/PLANILLA_UNIFICADA_TODOS?authtoken=8e7d9b1a50d940bf61830620b3a505af&zc_ownername=alejovm10&scope=creatorapi&A_O>2016')
-bod = response.body.sub('var zohoalejovm10view2432 =', '')
-bod = bod.gsub(';', '')
-
-bod  = JSON.parse bod
-bod = bod["S_Codigo"]
-@arr  = Array.new
-bod.each do |value|
- @arr << value["Consecutivo1"] 
-    
-end
 @size = 0
-Document.all.each do |doc|
-  @size = doc.anexo.size + @size
-  end 
+#Document.all.each do |doc|
+  @size = Document.first.anexo.size + @size
+  #end 
 
   if current_user.rol.doc_admin || current_user.rol.director 
 
@@ -58,17 +48,9 @@ end
     @document = Document.new
       @documents = DocumentType.all
 
-    response = HTTParty.get('https://creator.zoho.com/api/json/erp-servidual-ltda1/view/PLANILLA_UNIFICADA_TODOS?authtoken=8e7d9b1a50d940bf61830620b3a505af&zc_ownername=alejovm10&scope=creatorapi&A_O>=2016')
-bod = response.body.sub('var zohoalejovm10view2432 =', '')
-bod = bod.gsub(';', '')
-
-bod  = JSON.parse bod
-bod = bod["S_Codigo"]
-@arr  = Array.new
-bod.each do |value|
- @arr << value["Consecutivo1"] 
+   @arr  = Codigo.all 
     
-end
+
 #puts bod
 
   end
@@ -77,30 +59,23 @@ end
   def edit
      @documents = DocumentType.all
 
-    response = HTTParty.get('https://creator.zoho.com/api/json/erp-servidual-ltda1/view/PLANILLA_UNIFICADA_TODOS?authtoken=8e7d9b1a50d940bf61830620b3a505af&zc_ownername=alejovm10&scope=creatorapi&A_O>=2016')
-bod = response.body.sub('var zohoalejovm10view2432 =', '')
-bod = bod.gsub(';', '')
-
-bod  = JSON.parse bod
-bod = bod["S_Codigo"]
-@arr  = Array.new
-bod.each do |value|
- @arr << value["Consecutivo1"] 
-    
-end
+   @arr  = Codigo.all 
   end
 
   # POST /documents
   # POST /documents.json
   def create
     @document = Document.new(document_params)
+@documents = DocumentType.all
+@arr  = Codigo.all 
+ 
 
     respond_to do |format|
       if @document.save
         format.html { redirect_to documents_path, notice: 'El Documento fue creado exitosamente' }
         format.json { render :show, status: :created, location: @document }
       else
-        format.html { render :new }
+        format.html { render :new, :params => { :documents => @documents   } }
         format.json { render json: @document.errors, status: :unprocessable_entity }
       end
     end

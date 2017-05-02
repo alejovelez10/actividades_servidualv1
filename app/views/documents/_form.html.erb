@@ -15,7 +15,11 @@
 <div class="col-md-8 form-group">
   <div class="col-md-6 form-group">
     <%= f.label :obra %>
-        <%= f.select 'obra', options_for_select(@arr, @document.obra), {},{:class => 'form-control chosen-select'}%>
+    <%= f.select :obra,
+                  Codigo.all.map { |u| ["#{u.consecutivo}", u.consecutivo] },
+                             { include_blank: true },
+                             { class: 'chosen-select form-control ch'  }
+                  %>
 
   </div>
    <div class="col-md-6 form-group">

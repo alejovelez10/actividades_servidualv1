@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327204734) do
+ActiveRecord::Schema.define(version: 20170502150606) do
 
   create_table "actividads", force: :cascade do |t|
     t.integer  "consecutivo"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20170327204734) do
     t.integer "user_id"
     t.index ["actividad_id"], name: "index_actividads_users_on_actividad_id"
     t.index ["user_id"], name: "index_actividads_users_on_user_id"
+  end
+
+  create_table "codigos", force: :cascade do |t|
+    t.integer  "consecutivo"
+    t.string   "nombre_proyecto"
+    t.string   "codigo_completo"
+    t.string   "cliente"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   create_table "document_types", force: :cascade do |t|

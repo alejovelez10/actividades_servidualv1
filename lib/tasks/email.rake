@@ -27,7 +27,33 @@ actividad.save
     end 
   end
 
+  task codigos: :environment do
+      Codigo.destroy_all
+      response = HTTParty.get('https://creator.zoho.com/api/json/erp-servidual-ltda1/view/PLANILLA_UNIFICADA_TODOS?authtoken=8e7d9b1a50d940bf61830620b3a505af&zc_ownername=alejovm10&scope=creatorapi&A_O=2016')
+      bod = response.body.sub('var zohoalejovm10view2432 =', '')
+      bod = bod.gsub(';', '')
+      bod  = JSON.parse bod
+      bod = bod["S_Codigo"]
+      @arr  = Array.new
+      bod.each do |value|
+      Codigo.create(consecutivo: value["Consecutivo1"], nombre_proyecto: value["N_Cotizacion1"],codigo_completo: value["C_Completo"]) 
+     
+      end
+      response = HTTParty.get('https://creator.zoho.com/api/json/erp-servidual-ltda1/view/PLANILLA_UNIFICADA_TODOS?authtoken=8e7d9b1a50d940bf61830620b3a505af&zc_ownername=alejovm10&scope=creatorapi&A_O=2017')
+      bod = response.body.sub('var zohoalejovm10view2432 =', '')
+      bod = bod.gsub(';', '')
+      bod  = JSON.parse bod
+      bod = bod["S_Codigo"]
+      @arr  = Array.new
+      bod.each do |value|
+      Codigo.create(consecutivo: value["Consecutivo1"], nombre_proyecto: value["N_Cotizacion1"],codigo_completo: value["C_Completo"]) 
+     
+      end
+
+  end
+
 end
+
 
 
 
