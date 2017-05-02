@@ -76,7 +76,7 @@
         <td><%= get_date(document.document_date) %></td>
         
         <td><%= (link_to "#{document.anexo.file.filename}", document.anexo_url , style:"color:#357ebd") if document.anexo_url %></td>
-        <td><%= (link_to "#{((document.anexo.size.to_f)/1000000).round(2)}MB", document.anexo_url , style:"color:#357ebd") if document.anexo_url %></td>
+        <td></td>
         <td><%= document.document_type.nombre %></td>
  
         <td><%= document.description %></td>
